@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">LacTemperature</string>
+    <string name="menu_afficher_un_releve">Afficher un relevé</string>
+    <string name="menu_saisir_une_temperature">Saisir une température</string>
+    <string name="menu_afficher_la_moyenne_des_releves">Afficher la moyenne des relevés</string>
+    <string name="menuSaisieTemperature">Saisir une température</string>
+    <string name="menuAfficherUnReleve">Afficher un relevé</string>
+    <string name="menuAfficherMoyenneReleves">Afficher la moyenne des relevés</string>
 </resources>

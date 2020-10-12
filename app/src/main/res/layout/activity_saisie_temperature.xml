@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quel jour effectuez-vous ce relevé?" />
+
+        <CalendarView
+            android:id="@+id/calendarViewSaisie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="À quelle heure?" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSaisieTemp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/radioButtonSaisie6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6h" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSaisie12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12h" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSaisie18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="18h" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSaisie24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="24h" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quel lac relevez-vous ?" />
+
+        <Spinner
+            android:id="@+id/spinnerSaisieLac"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quelle est la température relevée ?" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_weight="1"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="°C" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonSaisieTemperatureValider"
+            style="@style/bouton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="valider" />
+
+        <Button
+            android:id="@+id/buttonSaisieTemperatureAnnuler"
+            style="@style/bouton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="annuler" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
