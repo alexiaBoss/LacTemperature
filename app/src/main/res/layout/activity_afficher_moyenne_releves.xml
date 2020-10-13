@@ -10,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingTop="15dp"
-        android:paddingRight="15dp">
+        android:paddingLeft="3dp"
+        android:paddingTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,12 +22,14 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/texte"
                 android:text="@string/QuestionMoisMoyenneReleve" />
 
             <Spinner
                 android:id="@+id/spinnerMoyenneMois"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                style="@style/texteRentre"/>
         </LinearLayout>
 
         <LinearLayout
@@ -41,12 +42,14 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/texte"
                 android:text="@string/QuestionLacMoyenne" />
 
             <Spinner
                 android:id="@+id/spinnerMoyenneLac"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                style="@style/texteRentre"/>
         </LinearLayout>
 
         <LinearLayout
