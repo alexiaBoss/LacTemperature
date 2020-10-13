@@ -25,6 +25,7 @@ public class ActivityAfficheSaisieTemperature extends Activity {
                     case R.id.buttonSaisieTemperatureValider:
                         // enregistrer les données dans la base
                         //i.putExtra("EXTRA_CPT",);
+                        finish();
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonSaisieTemperatureAnnuler:

@@ -38,7 +38,7 @@ public class ActivitySaisieTemperature extends Activity {
                         //on passer les infos dans l'autre interface
                         Intent i = new Intent (ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
                         //i.putExtra("EXTRA_CPT",);
-                        startActivityForResult(i, 0);
+                        startActivity(i);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonSaisieTemperatureAnnuler:
