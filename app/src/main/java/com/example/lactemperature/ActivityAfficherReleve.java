@@ -34,9 +34,9 @@ public class ActivityAfficherReleve extends Activity {
                     case R.id.buttonAfficherReleveValider:
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
-                        Intent i = new Intent (ActivityAfficherReleve.this, AfficheReleve.class);
+                        Intent i = new Intent (ActivityAfficherReleve.this, ActivityAfficheReleve.class);
                         //i.putExtra("EXTRA_CPT",);
-                        finish();
+                        startActivityForResult(i, 0);
                         Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonAfficherReleveAnnuler:

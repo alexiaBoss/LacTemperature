@@ -16,14 +16,19 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/MoyenneReleveReponse" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <TextView
+            android:id="@+id/TextViewMoyenneReleveReponse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"/>
+            android:text="12.5"/>
+
+        <TextView
+            android:id="@+id/TextViewMoyenneCF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/C"/>
     </LinearLayout>
 
     <LinearLayout
@@ -35,15 +40,14 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/MoyenneAfficherLac" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
+        <TextView
+            android:id="@+id/TextViewMoyenneLac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:text='Lac Lémand'/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,21 +55,14 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/buttonSaisieTemperatureValider"
-            style="@style/bouton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/BoutonValider" />
 
         <Button
-            android:id="@+id/buttonSaisieTemperatureAnnuler"
+            android:id="@+id/buttonRetour"
             style="@style/bouton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/BoutonQuitter" />
+            android:text="@string/Retour" />
     </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
