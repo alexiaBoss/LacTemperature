@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".ActivityAfficherMoyenneReleves">
         </activity>
+        <activity android:name=".ActivityAfficheSaisieTemperature">
+        </activity>
     </application>
 
 </manifest>
