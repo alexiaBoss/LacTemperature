@@ -36,9 +36,9 @@ public class ActivitySaisieTemperature extends Activity {
                     case R.id.buttonSaisieTemperatureValider:
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
-                        Intent i = new Intent (ActivitySaisieTemperature.this, AfficheSaisieTemperature.class);
+                        Intent i = new Intent (ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
                         //i.putExtra("EXTRA_CPT",);
-                        finish();
+                        startActivityForResult(i, 0);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonSaisieTemperatureAnnuler:
