@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".ActivityAfficheSaisieTemperature">
         </activity>
+        <activity android:name=".ActivityAfficheMoyenneReleve">
+        </activity>
     </application>
 
 </manifest>

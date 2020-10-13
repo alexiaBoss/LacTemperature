@@ -27,14 +27,14 @@ public class ActivityAfficherMoyenneReleves extends Activity {
                     case R.id.buttonAfficherReleveValider:
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
-                        Intent i = new Intent (ActivityAfficherMoyenneReleves.this, AfficheReleve.class);
+                        Intent i = new Intent (ActivityAfficherMoyenneReleves.this, ActivityAfficheMoyenneReleve.class);
                         //i.putExtra("EXTRA_CPT",);
-                        finish();
-                        Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
+                        startActivityForResult(i,0);
+                        Toast.makeText(getApplicationContext(), "Ouverture de l'affichage des moyennes", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonAfficherReleveAnnuler:
                         finish();
-                        Toast.makeText(getApplicationContext(), "Annulation de l'affichage", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Annulation de l'affichage des moyennes", Toast.LENGTH_LONG).show();
                         break;
 
 
