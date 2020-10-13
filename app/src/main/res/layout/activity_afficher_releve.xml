@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
+        android:paddingLeft="10dp"
         android:paddingTop="7dp"
         android:paddingRight="15dp"
         tools:layout_editor_absoluteY="25dp">
@@ -40,10 +40,10 @@
 
             <TextView
                 android:id="@+id/textView4"
+                style="@style/texte"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@style/texte"
                 android:text="@string/QuestionHeure" />
 
             <RadioGroup
