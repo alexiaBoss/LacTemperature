@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Quel jour effectuez-vous ce relevé?" />
+            android:text="De quel jour souhaitez-vous le relevé?" />
 
         <EditText
             android:id="@+id/dateReleveAfficherReleve"
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quel lac relevez-vous ?" />
+                android:text="De quel lac souhaitez-vous le relevé?" />
 
             <Spinner
                 android:id="@+id/spinnerAfficheLac"
