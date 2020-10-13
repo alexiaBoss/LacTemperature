@@ -26,6 +26,7 @@ public class ActivitySaisieTemperature extends Activity {
 
         final  Calendar myCalendar = Calendar.getInstance();
         final EditText edittext = findViewById(R.id.dateReleve);
+        edittext.requestFocus();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override

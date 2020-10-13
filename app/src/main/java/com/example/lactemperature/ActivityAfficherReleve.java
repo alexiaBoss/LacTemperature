@@ -25,6 +25,7 @@ public class ActivityAfficherReleve extends Activity {
 
         final Calendar myCalendar = Calendar.getInstance();
         final EditText edittext = findViewById(R.id.dateReleveAfficherReleve);
+        edittext.requestFocus();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
