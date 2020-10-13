@@ -6,4 +6,6 @@
     <color name="ColorFondButton">#5883A4 </color>
     <color name="ColorTextButton">#FFFFFF</color>
     <color name="ColorText">#000000</color>
+    <color name="ColorTexte">#1F247B</color>
+    <color name="ColorTexteRentre">#585DC1</color>
 </resources>

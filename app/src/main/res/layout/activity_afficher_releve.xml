@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            style="@style/texte"
             android:text="@string/QuestionJourReleve" />
 
         <EditText
@@ -27,6 +28,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:editable="false"
+            style="@style/texteRentre"
             android:hint="@string/DateReleve" />
 
         <LinearLayout
@@ -41,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                style="@style/texte"
                 android:text="@string/QuestionHeure" />
 
             <RadioGroup
@@ -53,24 +56,28 @@
                     android:id="@+id/radioButtonAffiche6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/sixh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/douzeh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/dixhuith" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/vingtquatreh" />
             </RadioGroup>
         </LinearLayout>
@@ -87,12 +94,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                style="@style/texte"
                 android:text="@string/QuestionLac" />
 
             <Spinner
                 android:id="@+id/spinnerAfficheLac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/texteRentre"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -102,6 +111,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingTop="15dp"
+            style="@style/texte"
             android:text="@string/questionUnite" />
 
         <LinearLayout
@@ -121,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/texte"
                     android:text="@string/C" />
 
                 <RadioButton
@@ -128,6 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    style="@style/texte"
                     android:text="@string/F" />
             </RadioGroup>
         </LinearLayout>

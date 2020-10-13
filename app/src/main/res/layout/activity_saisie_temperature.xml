@@ -18,6 +18,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/texte"
             android:layout_weight="1"
             android:text="@string/QuestionReleve" />
 
@@ -27,6 +28,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:editable="false"
+            style="@style/texteRentre"
             android:hint="@string/DateReleve" />
 
         <LinearLayout
@@ -40,6 +42,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/texte"
                 android:layout_weight="1"
                 android:text="@string/QuestionHeure" />
 
@@ -53,17 +56,20 @@
                     android:id="@+id/radioButtonSaisie6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/sixh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaisie12"
                     android:layout_width="match_parent"
+                    style="@style/texte"
                     android:layout_height="wrap_content"
                     android:text="@string/douzeh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaisie18"
                     android:layout_width="match_parent"
+                    style="@style/texte"
                     android:layout_height="wrap_content"
                     android:text="@string/dixhuith" />
 
@@ -71,6 +77,7 @@
                     android:id="@+id/radioButtonSaisie24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/texte"
                     android:text="@string/vingtquatreh" />
             </RadioGroup>
         </LinearLayout>
@@ -87,12 +94,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                style="@style/texte"
                 android:text="@string/questionLacAfficherReleve" />
 
             <Spinner
                 android:id="@+id/spinnerSaisieLac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/texteRentre"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -108,6 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                style="@style/texte"
                 android:text="@string/QuestionTemp" />
 
         </LinearLayout>
@@ -123,8 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
+                style="@style/texteRentre"
                 android:text="" />
 
             <TextView
