@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Quel jour effectuez-vous ce relevé?" />
+            android:text="@string/QuestionReleve" />
 
         <EditText
             android:id="@+id/dateReleve"
@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:editable="false"
-            android:hint="Date de relevé" />
+            android:hint="@string/DateReleve" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="À quelle heure?" />
+                android:text="@string/QuestionHeure" />
 
             <RadioGroup
                 android:id="@+id/radioGroupSaisieTemp"
@@ -51,25 +51,25 @@
                     android:id="@+id/radioButtonSaisie6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="6h" />
+                    android:text="@string/sixh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaisie12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="12h" />
+                    android:text="@string/douzeh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaisie18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="18h" />
+                    android:text="@string/dixhuith" />
 
                 <RadioButton
                     android:id="@+id/radioButtonSaisie24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="24h" />
+                    android:text="@string/vingtquatreh" />
             </RadioGroup>
         </LinearLayout>
 
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quel lac relevez-vous ?" />
+                android:text="@string/questionLacAfficherReleve" />
 
             <Spinner
                 android:id="@+id/spinnerSaisieLac"
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quelle est la température relevée ?" />
+                android:text="@string/QuestionTemp" />
 
         </LinearLayout>
 
@@ -145,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="valider" />
+                android:text="@string/BoutonValider" />
 
             <Button
                 android:id="@+id/buttonSaisieTemperatureAnnuler"
@@ -153,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="annuler" />
+                android:text="@string/BoutonQuitter" />
         </LinearLayout>
 
     </LinearLayout>

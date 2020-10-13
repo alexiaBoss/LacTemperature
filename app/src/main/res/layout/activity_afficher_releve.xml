@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="De quel jour souhaitez-vous le relevé?" />
+            android:text="@string/QuestionJourReleve" />
 
         <EditText
             android:id="@+id/dateReleveAfficherReleve"
@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:editable="false"
-            android:hint="Date de relevé" />
+            android:hint="@string/DateReleve" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="À quelle heure?" />
+                android:text="@string/QuestionHeure" />
 
             <RadioGroup
                 android:id="@+id/radioGroupAfficheReleve"
@@ -51,25 +51,25 @@
                     android:id="@+id/radioButtonAffiche6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="6h" />
+                    android:text="@string/sixh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="12h" />
+                    android:text="@string/douzeh" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="18h" />
+                    android:text="@string/dixhuith" />
 
                 <RadioButton
                     android:id="@+id/radioButtonAffiche24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="24h" />
+                    android:text="@string/vingtquatreh" />
             </RadioGroup>
         </LinearLayout>
 
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="De quel lac souhaitez-vous le relevé?" />
+                android:text="@string/QuestionLac" />
 
             <Spinner
                 android:id="@+id/spinnerAfficheLac"
@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="En quelle unité doit-être affichée la température:" />
+            android:text="@string/questionUnite" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,14 +118,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="°C" />
+                    android:text="@string/C" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="°F" />
+                    android:text="@string/F" />
             </RadioGroup>
         </LinearLayout>
 
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="valider" />
+                android:text="@string/BoutonValider" />
 
             <Button
                 android:id="@+id/buttonAfficherReleveAnnuler"
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="annuler" />
+                android:text="@string/BoutonAnnuler" />
         </LinearLayout>
 
     </LinearLayout>

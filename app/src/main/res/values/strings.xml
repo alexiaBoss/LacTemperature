@@ -6,4 +6,21 @@
     <string name="menuSaisieTemperature">Saisir une température</string>
     <string name="menuAfficherUnReleve">Afficher un relevé</string>
     <string name="menuAfficherMoyenneReleves">Afficher la moyenne des relevés</string>
+    <string name="QuestionJourReleve">De quel jour souhaitez-vous le relevé?</string>
+    <string name="DateReleve">Date de relevé</string>
+    <string name="QuestionHeure">À quelle heure?</string>
+    <string name="sixh">6h</string>
+    <string name="douzeh">12h</string>
+    <string name="dixhuith">18h</string>
+    <string name="vingtquatreh">24h</string>
+    <string name="QuestionLac">De quel lac souhaitez-vous le relevé?</string>
+    <string name="questionUnite">En quelle unité doit-être affichée la température:</string>
+    <string name="C">°C</string>
+    <string name="F">°F</string>
+    <string name="BoutonValider">valider</string>
+    <string name="BoutonAnnuler">annuler</string>
+    <string name="QuestionReleve">Quel jour effectuez-vous ce relevé?</string>
+    <string name="questionLacAfficherReleve">Quel lac relevez-vous ?</string>
+    <string name="QuestionTemp">Quelle est la température relevée ?</string>
+    <string name="BoutonQuitter">annuler</string>
 </resources>
