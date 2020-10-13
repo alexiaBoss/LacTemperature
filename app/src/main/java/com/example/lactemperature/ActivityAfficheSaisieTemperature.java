@@ -12,8 +12,8 @@ public class ActivityAfficheSaisieTemperature extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valider_saisie_temperature);
         // gestion des boutons
-        Button buttonSaisieTemperatureValider = findViewById(R.id.buttonSaisieTemperatureValider);
-        Button buttonSaisieTemperatureAnnuler = findViewById(R.id.buttonSaisieTemperatureAnnuler);
+        Button buttonSaisieTemperatureValider = findViewById(R.id.buttonValiderSaisieTemperature);
+        Button buttonSaisieTemperatureAnnuler = findViewById(R.id.buttonAnnulerSaisieTemperature);
 
 
         //on place un écouteur dessus:
@@ -22,14 +22,20 @@ public class ActivityAfficheSaisieTemperature extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.buttonSaisieTemperatureValider:
+                    case R.id.buttonValiderSaisieTemperature:
                         // enregistrer les données dans la base
                         //i.putExtra("EXTRA_CPT",);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
+                        finish();
+                        Intent i = new Intent (ActivityAfficheSaisieTemperature.this, MainActivity.class);
+                        startActivity(i);
                         break;
-                    case R.id.buttonSaisieTemperatureAnnuler:
+                    case R.id.buttonAnnulerSaisieTemperature:
                         finish();
                         Toast.makeText(getApplicationContext(), "Annulation de la saisie", Toast.LENGTH_LONG).show();
+                        finish();
+                        Intent i2 = new Intent (ActivityAfficheSaisieTemperature.this, MainActivity.class);
+                        startActivity(i2);
                         break;
 
 

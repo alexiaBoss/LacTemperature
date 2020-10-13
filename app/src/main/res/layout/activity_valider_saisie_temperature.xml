@@ -29,11 +29,10 @@
                     android:layout_height="wrap_content"
                     android:text="Ce relevé est effectué le :" />
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName"
+                <TextView
+                    android:id="@+id/TextViewTextPersonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:text="01/01/2021" />
             </LinearLayout>
 
@@ -56,11 +55,10 @@
                     android:layout_height="wrap_content"
                     android:text="À :" />
 
-                <EditText
-                    android:id="@+id/editTextSaisieValiderNomLac"
+                <TextView
+                    android:id="@+id/TextViewSaisieValiderHeure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:text="18" />
 
                 <TextView
@@ -79,16 +77,15 @@
             android:paddingTop="15dp">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sur le lac :" />
 
-            <EditText
-                android:id="@+id/editTextSaisieValiderNomLac"
+            <TextView
+                android:id="@+id/TextViewSaisieValiderNomLac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:text="nomLac" />
 
         </LinearLayout>
@@ -105,20 +102,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="La température mesurée est : " />
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                <TextView
+                    android:id="@+id/TextViewTextPersonName3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
                     android:text="12" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="°C" />
@@ -138,14 +134,14 @@
                 android:paddingTop="40dp">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonValiderSaisieTemperature"
                     style="@style/bouton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Valider" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonAnnulerSaisieTemperature"
                     style="@style/bouton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

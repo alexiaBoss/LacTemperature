@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-
-public class ActivityAfficheMoyenneReleve extends Activity{
+public class ActivityAfficheReleve extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affiche_moyenne_releve_temperature);
+        setContentView(R.layout.activity_affiche_releve_temperature);
         // gestion des boutons
         Button buttonSaisieTemperatureValider = findViewById(R.id.buttonRetour);
 
@@ -28,7 +27,7 @@ public class ActivityAfficheMoyenneReleve extends Activity{
                         //i.putExtra("EXTRA_CPT",);
                         Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
                         finish();
-                        Intent i = new Intent (ActivityAfficheMoyenneReleve.this, MainActivity.class);
+                        Intent i = new Intent (ActivityAfficheReleve.this, MainActivity.class);
                         startActivity(i);
                         break;
                 }
@@ -39,5 +38,3 @@ public class ActivityAfficheMoyenneReleve extends Activity{
         buttonSaisieTemperatureValider.setOnClickListener(ecouteur1);
     }
 }
-
-
