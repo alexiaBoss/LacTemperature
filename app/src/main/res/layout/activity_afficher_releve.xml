@@ -9,7 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingTop="3dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="7dp"
+        android:paddingRight="15dp"
         tools:layout_editor_absoluteY="25dp">
 
         <TextView
@@ -99,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingTop="15dp"
             android:text="@string/questionUnite" />
 
         <LinearLayout
