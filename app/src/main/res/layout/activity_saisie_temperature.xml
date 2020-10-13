@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        tools:layout_editor_absoluteY="25dp">
 
         <TextView
             android:id="@+id/textView3"
@@ -16,18 +19,20 @@
             android:layout_weight="1"
             android:text="Quel jour effectuez-vous ce relevé?" />
 
-        <CalendarView
-            android:id="@+id/calendarViewSaisie"
-            android:layout_width="335dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
+        <EditText
+            android:id="@+id/dateReleve"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:editable="false"
+            android:hint="Date de relevé" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="25dp">
 
             <TextView
                 android:id="@+id/textView4"
@@ -39,7 +44,7 @@
             <RadioGroup
                 android:id="@+id/radioGroupSaisieTemp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
 
                 <RadioButton
@@ -72,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="25dp">
 
             <TextView
                 android:id="@+id/textView5"
@@ -84,8 +90,8 @@
             <Spinner
                 android:id="@+id/spinnerSaisieLac"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,13 +107,21 @@
                 android:layout_weight="1"
                 android:text="Quelle est la température relevée ?" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/editTextTemperatureSaisie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:layout_weight="1"
                 android:text="" />
 
             <TextView
@@ -116,15 +130,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="°C"
-                android:textColor="@color/ColorText"
-                />
+                android:textColor="@color/ColorText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonSaisieTemperatureValider"
