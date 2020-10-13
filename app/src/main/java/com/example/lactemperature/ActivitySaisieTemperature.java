@@ -5,9 +5,12 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -16,11 +19,12 @@ import java.util.Locale;
 
 public class ActivitySaisieTemperature extends Activity {
 
-
+    final String[] leLac= new String[1];
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saisie_temperature);
+
 
         // gestion des boutons
         Button buttonSaisieTemperatureValider = findViewById(R.id.buttonSaisieTemperatureValider);
@@ -54,6 +58,28 @@ public class ActivitySaisieTemperature extends Activity {
         //on affecte l'écouteur aux boutons:
         buttonSaisieTemperatureValider.setOnClickListener(ecouteur1);
         buttonSaisieTemperatureAnnuler.setOnClickListener(ecouteur1);
+
+
+
+        //gestion de la liste déroulante des numéros de compteur
+        final Spinner spinnerSaisieLac = (Spinner) findViewById(R.id.spinnerSaisieLac);
+        String[] leslacs = {"Lac Lément", "Etang de Berre", "Etang de Thau", "Etang de Vaccarès", "Lac d'Hourtin", "Lac de Grand-Lieu"};
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, leslacs);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSaisieLac.setAdapter(dataAdapterR);
+        spinnerSaisieLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                leLac[0] = String.valueOf(spinnerSaisieLac.getSelectedItem());
+                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisie : " + "\n : " + leLac[0], Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
 
 
         final  Calendar myCalendar = Calendar.getInstance();
