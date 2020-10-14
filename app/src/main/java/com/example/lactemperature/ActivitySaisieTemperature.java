@@ -70,7 +70,7 @@ public class ActivitySaisieTemperature extends Activity {
         spinnerSaisieLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerSaisieLac.getSelectedItem());
-                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisie : " + "\n : " + leLac[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisi : " + "\n : " + leLac[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override
