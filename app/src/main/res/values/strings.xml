@@ -22,7 +22,7 @@
     <string name="QuestionReleve">Quel jour effectuez-vous ce relevé? </string>
     <string name="questionLacAfficherReleve">Quel lac relevez-vous ? </string>
     <string name="QuestionTemp">Quelle est la température relevée ? </string>
-    <string name="QuestionMoisMoyenneReleve">De quels mois desirez-vous la moyenne des relevés ? </string>
+    <string name="QuestionMoisMoyenneReleve">De quel mois desirez-vous la moyenne des relevés ? </string>
     <string name="QuestionLacMoyenne">De quel lac ? </string>
     <string name="MoyenneReleveReponse">La moyenne des relevés est de : </string>
     <string name="MoyenneAfficherLac">Sur le lac : </string>

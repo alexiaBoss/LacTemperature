@@ -60,7 +60,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
-                Toast.makeText(ActivityAfficherMoyenneReleves.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityAfficherMoyenneReleves.this, "Vous avez choisi : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -80,7 +80,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
         spinnerAfficheMois.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerAfficheMois.getSelectedItem());
-                Toast.makeText(ActivityAfficherMoyenneReleves.this, "Vous avez choisie : " + "\n" + leMois[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityAfficherMoyenneReleves.this, "Vous avez choisi : " + "\n" + leMois[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override
