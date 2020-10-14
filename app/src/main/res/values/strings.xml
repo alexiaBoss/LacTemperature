@@ -27,4 +27,8 @@
     <string name="MoyenneReleveReponse">La moyenne des relevés est de : </string>
     <string name="MoyenneAfficherLac">Sur le lac : </string>
     <string name="Retour">Retour</string>
+    <string name="BoutonListeLac">Liste des Lacs</string>
+    <string name="longitude">Longitude</string>
+    <string name="lattitude">Lattitude</string>
+    <string name="selectionnez_un_lac">Selectionnez un lac :</string>
 </resources>
