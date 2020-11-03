@@ -15,5 +15,10 @@
         style="@style/texte"
         android:title="@string/menuAfficherMoyenneReleves">
     </item>
+    <item
+        android:id="@+id/menuListeLac"
+        style="@style/texte"
+        android:title="@string/menulisteLac">
+    </item>
 
 </menu>

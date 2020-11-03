@@ -3,6 +3,7 @@ package com.example.lactemperature;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -61,16 +63,29 @@ public class ActivitySaisieTemperature extends Activity {
 
 
 
-        //gestion de la liste déroulante des numéros de compteur
-        final Spinner spinnerSaisieLac = (Spinner) findViewById(R.id.spinnerSaisieLac);
-        String[] leslacs = {"Lac Lément", "Etang de Berre", "Etang de Thau", "Etang de Vaccarès", "Lac d'Hourtin", "Lac de Grand-Lieu"};
-        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, leslacs);
+        //gestion de la liste déroulante des Lacs
+        final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerSaisieLac);
+        DAOBdd lacbdd = new DAOBdd(this);
+        lacbdd.open();
+        Cursor c = lacbdd.getDataLac();
+        ArrayList<String> leslacs = new ArrayList<String>();
+        if (c.moveToFirst()) {
+
+            if (c.getCount() != 0) {
+
+                while (!c.isAfterLast()) {
+                    leslacs.add(c.getString(1)); //add the item
+                    c.moveToNext();
+                }
+            }
+        }
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,leslacs);
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSaisieLac.setAdapter(dataAdapterR);
-        spinnerSaisieLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerAfficheLac.setAdapter(dataAdapterR);
+        spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                leLac[0] = String.valueOf(spinnerSaisieLac.getSelectedItem());
-                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisi : " + "\n : " + leLac[0], Toast.LENGTH_SHORT).show();
+                leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
+                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override

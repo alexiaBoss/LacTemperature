@@ -27,6 +27,8 @@
         <activity android:name=".ActivityAfficheMoyenneReleve">
         </activity>
         <activity android:name=".ActivityAfficheReleve">
+    </activity>
+        <activity android:name=".ActivityListeLac">
         </activity>
 
     </application>

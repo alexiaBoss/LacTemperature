@@ -3,6 +3,7 @@ package com.example.lactemperature;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -61,9 +63,22 @@ public class ActivityAfficherReleve extends Activity {
 
 
 
-        //gestion de la liste déroulante des numéros de compteur
+        //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerAfficheLac);
-        String[] leslacs = {"Lac Lément", "Etang de Berre", "Etang de Thau", "Etang de Vaccarès", "Lac d'Hourtin", "Lac de Grand-Lieu"};
+        DAOBdd lacbdd = new DAOBdd(this);
+        lacbdd.open();
+        Cursor c = lacbdd.getDataLac();
+        ArrayList<String> leslacs = new ArrayList<String>();
+        if (c.moveToFirst()) {
+
+            if (c.getCount() != 0) {
+
+                while (!c.isAfterLast()) {
+                    leslacs.add(c.getString(1)); //add the item
+                    c.moveToNext();
+                }
+            }
+        }
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, leslacs);
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAfficheLac.setAdapter(dataAdapterR);

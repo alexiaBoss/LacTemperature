@@ -8,15 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="15dp">
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView13"
+                style="@style/texte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -33,7 +36,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:orientation="vertical"
             android:paddingTop="15dp">
 
@@ -44,6 +47,7 @@
 
                 <TextView
                     android:id="@+id/textView14"
+                    style="@style/texte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -51,6 +55,7 @@
 
                 <TextView
                     android:id="@+id/textViewLattitude"
+                    style="@style/texteRentre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -66,19 +71,36 @@
 
                 <TextView
                     android:id="@+id/textView16"
+                    style="@style/texte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                 android:text="@string/longitude" />
+                    android:text="@string/longitude" />
 
-             <TextView
-                 android:id="@+id/textViewLongitude"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_weight="1"
-                 android:text="TextView" />
-         </LinearLayout>
+                <TextView
+                    android:id="@+id/textViewLongitude"
+                    style="@style/texteRentre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
 
-     </LinearLayout>
- </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonRetourListeLac"
+                style="@style/bouton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Retour" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
