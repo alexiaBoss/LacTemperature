@@ -9,9 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static java.lang.String.valueOf;
 
 
 public class ActivityListeLac extends Activity {
@@ -47,12 +50,11 @@ public class ActivityListeLac extends Activity {
 
         //gestion de la liste déroulante des lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerNomLacListeLac);
-        DAOBdd lacbdd = new DAOBdd(this);
+        final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();
         if(c.moveToFirst()) {
-            ;
             if (c.getCount() != 0) {
 
                 while (!c.isAfterLast()) {
@@ -66,8 +68,14 @@ public class ActivityListeLac extends Activity {
         spinnerAfficheLac.setAdapter(dataAdapterR);
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
+                leLac[0] = valueOf(spinnerAfficheLac.getSelectedItem());
                 Toast.makeText(ActivityListeLac.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
+                //Remplissage des champs pour la longitude et la latitude.
+                Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
+                TextView longitude = findViewById(R.id.textViewLongitude);
+                longitude.setText(valueOf(lac.getLongitude()));
+                TextView latitude = findViewById(R.id.textViewLatitude);
+                latitude.setText(valueOf(lac.getLatitude()));
             }
 
             @Override
