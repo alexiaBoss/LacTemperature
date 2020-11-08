@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class ActivityAfficherReleve extends Activity {
 
 
     final String[] leLac= new String[1];
+    final String[] laTemp= new String[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,8 @@ public class ActivityAfficherReleve extends Activity {
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
                         Intent i = new Intent (ActivityAfficherReleve.this, ActivityAfficheReleve.class);
-                        //i.putExtra("EXTRA_CPT",);
+                        i.putExtra("EXTRA_LAC",leLac[0]);
+                        i.putExtra("EXTRA_TEMP",laTemp[0]);
                         startActivityForResult(i, 0);
                         Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
                         break;
@@ -60,7 +63,37 @@ public class ActivityAfficherReleve extends Activity {
         buttonAfficherReleveValider.setOnClickListener(ecouteur1);
         buttonAfficherReleveAnnuler.setOnClickListener(ecouteur1);
 
+        //programmation des boutons radios
+        RadioGroup radioGroupRaison = findViewById(R.id.radioGroupAfficheReleve);
+        radioGroupRaison.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup radioGroupRaison,int i){
+                switch (i) {
+                    case R.id.radioButtonAffiche6:
+                        Toast.makeText(getApplicationContext(), " 6h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="TempA6h";
+                        break;
+                    case R.id.radioButtonAffiche12:
+                        Toast.makeText(getApplicationContext(), " 12h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="TempA12h";
+                        break;
+                    case R.id.radioButtonAffiche18:
 
+                        Toast.makeText(getApplicationContext(), " 18h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="TempA18h";
+                        break;
+                    case R.id.radioButtonAffiche24:
+
+                        Toast.makeText(getApplicationContext(), " 24h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="TempA24h";
+                        break;
+                }
+            }
+
+        });
 
 
         //gestion de la liste déroulante des Lacs
