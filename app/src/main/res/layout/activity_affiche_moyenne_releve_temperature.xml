@@ -13,42 +13,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="30dp">
+        android:paddingTop="15dp">
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/texte"
+            style="@style/texteMoyenne"
             android:text="@string/MoyenneReleveReponse" />
 
         <TextView
             android:id="@+id/TextViewMoyenneReleveReponse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/texteRentre"
+            style="@style/texteRentreMoyenne"
             android:text="12.5"/>
 
         <TextView
             android:id="@+id/TextViewMoyenneCF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/texte"
+            style="@style/texteMoyenne"
             android:text="@string/C"/>
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="30dp"
-        android:paddingLeft="3dp">
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/texte"
+            style="@style/texteMoyenne"
             android:text="@string/MoyenneAfficherLac" />
 
         <TextView
@@ -56,20 +56,163 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/texteRentre"
+            style="@style/texteRentreMoyenne"
             android:text=' Lac Lémand'/>
     </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+
+
+            <TextView
+                android:id="@+id/textView6h"
+                style="@style/texteMoyenne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La moyenne des relevés à 6h est : " />
+
+            <TextView
+                android:id="@+id/textViewMoyenne6h"
+                android:layout_width="wrap_content"
+                style="@style/texteRentreMoyenne"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+
+            <TextView
+                android:id="@+id/TextViewMoyenneC6h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/texteMoyenne"
+                android:text="@string/C"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+
+
+            <TextView
+                android:id="@+id/textView12h"
+                style="@style/texteMoyenne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La moyenne des relevés à 12h est : " />
+
+            <TextView
+                android:id="@+id/textViewMoyenne12h"
+                android:layout_width="wrap_content"
+                style="@style/texteRentreMoyenne"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+
+            <TextView
+                android:id="@+id/TextViewMoyenneC12h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/texteMoyenne"
+                android:text="@string/C"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+
+
+            <TextView
+                android:id="@+id/textView18h"
+                style="@style/texteMoyenne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La moyenne des relevés à 18h est : " />
+
+            <TextView
+                android:id="@+id/textViewMoyenne18h"
+                android:layout_width="wrap_content"
+                style="@style/texteRentreMoyenne"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+
+            <TextView
+                android:id="@+id/TextViewMoyenneC18h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/texteMoyenne"
+                android:text="@string/C"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+
+
+            <TextView
+                android:id="@+id/textView24h"
+                style="@style/texteMoyenne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La moyenne des relevés à 24h est : " />
+
+            <TextView
+                android:id="@+id/textViewMoyenne24h"
+                android:layout_width="wrap_content"
+                style="@style/texteRentreMoyenne"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+
+            <TextView
+                android:id="@+id/TextViewMoyenneC24h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/texte"
+                android:text="@string/C"/>
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/TextViewGraphique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            style="@style/texteMoyenne"
+            android:text=" Graphique représentant la variation des températures relevées:"/>
+
+
         <com.jjoe64.graphview.GraphView
             android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:paddingTop="15dp"
+            android:layout_height="170dip"
+            android:paddingTop="10dp"
             android:id="@+id/graph" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingTop="30dp">
+        android:orientation="horizontal">
 
 
         <Button

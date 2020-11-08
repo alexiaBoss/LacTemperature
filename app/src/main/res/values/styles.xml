@@ -25,6 +25,18 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="texteMoyenne">
+        <item name="android:textColor">@color/ColorTexte</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="texteRentreMoyenne">
+        <item name="android:textColor">@color/ColorTexteRentre</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
     <style name="texteRentre">
         <item name="android:textColor">@color/ColorTexteRentre</item>
         <item name="android:textSize">17dp</item>
