@@ -26,11 +26,16 @@ public class ActivityAfficherReleve extends Activity {
 
     final String[] leLac= new String[1];
     final String[] laTemp= new String[1];
+    final String[] leSigne= new String[1];
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_releve);
 
+        final EditText Date = findViewById(R.id.dateReleveAfficherReleve);
         Button buttonAfficherReleveValider = findViewById(R.id.buttonAfficherReleveValider);
         Button buttonAfficherReleveAnnuler = findViewById(R.id.buttonAfficherReleveAnnuler);
 
@@ -46,6 +51,8 @@ public class ActivityAfficherReleve extends Activity {
                         Intent i = new Intent (ActivityAfficherReleve.this, ActivityAfficheReleve.class);
                         i.putExtra("EXTRA_LAC",leLac[0]);
                         i.putExtra("EXTRA_TEMP",laTemp[0]);
+                        i.putExtra("EXTRA_DATE",Date.getText().toString());
+                        i.putExtra("EXTRA_SIGNE",leSigne[0]);
                         startActivityForResult(i, 0);
                         Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
                         break;
@@ -64,37 +71,57 @@ public class ActivityAfficherReleve extends Activity {
         buttonAfficherReleveAnnuler.setOnClickListener(ecouteur1);
 
         //programmation des boutons radios
-        RadioGroup radioGroupRaison = findViewById(R.id.radioGroupAfficheReleve);
-        radioGroupRaison.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged (RadioGroup radioGroupRaison,int i){
+        RadioGroup radioGroupTemp = findViewById(R.id.radioGroupAfficheReleve);
+        radioGroupTemp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup radioGroupTemp,int i){
                 switch (i) {
                     case R.id.radioButtonAffiche6:
                         Toast.makeText(getApplicationContext(), " 6h",
                                 Toast.LENGTH_LONG).show();
-                        laTemp[0] ="TempA6h";
+                        laTemp[0] ="6";
                         break;
                     case R.id.radioButtonAffiche12:
                         Toast.makeText(getApplicationContext(), " 12h",
                                 Toast.LENGTH_LONG).show();
-                        laTemp[0] ="TempA12h";
+                        laTemp[0] ="12";
                         break;
                     case R.id.radioButtonAffiche18:
 
                         Toast.makeText(getApplicationContext(), " 18h",
                                 Toast.LENGTH_LONG).show();
-                        laTemp[0] ="TempA18h";
+                        laTemp[0] ="18";
                         break;
                     case R.id.radioButtonAffiche24:
 
                         Toast.makeText(getApplicationContext(), " 24h",
                                 Toast.LENGTH_LONG).show();
-                        laTemp[0] ="TempA24h";
+                        laTemp[0] ="24";
                         break;
                 }
             }
 
         });
 
+//programmation des boutons radios
+        RadioGroup radioGroupSigne = findViewById(R.id.radioGroupSigne);
+        radioGroupSigne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup radioGroupSigne,int i){
+                switch (i) {
+                    case R.id.radioButton:
+                        Toast.makeText(getApplicationContext(), " Degrés Celsius",
+                                Toast.LENGTH_LONG).show();
+                        leSigne[0] ="°C";
+                        break;
+                    case R.id.radioButton2:
+                        Toast.makeText(getApplicationContext(), " Degrés Fahrenheit",
+                                Toast.LENGTH_LONG).show();
+                        leSigne[0] ="°F";
+                        break;
+
+                }
+            }
+
+        });
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerAfficheLac);
@@ -131,7 +158,7 @@ public class ActivityAfficherReleve extends Activity {
 
 
 
-
+//gestion du calendrier
             final Calendar myCalendar = Calendar.getInstance();
         final EditText edittext = findViewById(R.id.dateReleveAfficherReleve);
         edittext.requestFocus();

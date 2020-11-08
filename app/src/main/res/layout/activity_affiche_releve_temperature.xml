@@ -32,7 +32,7 @@
                     android:text="Ce relevé est effectué le : " />
 
                 <TextView
-                    android:id="@+id/textViewTextPersonName"
+                    android:id="@+id/textViewDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:editable="false"
@@ -63,7 +63,7 @@
                     android:text="À : " />
 
                 <TextView
-                    android:id="@+id/TextViewSaisieValiderHeure"
+                    android:id="@+id/TextViewHeure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/texteRentre"
@@ -93,7 +93,7 @@
                 android:text="Sur le lac : " />
 
             <TextView
-                android:id="@+id/TextViewSaisieValiderNomLac"
+                android:id="@+id/TextViewNomLac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/texteRentre"
@@ -120,14 +120,14 @@
                     android:text="La température mesurée est : " />
 
                 <TextView
-                    android:id="@+id/TextViewTextPersonName3"
+                    android:id="@+id/TextViewTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/texteRentre"
                     android:text="12" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/textViewSigne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/texte"

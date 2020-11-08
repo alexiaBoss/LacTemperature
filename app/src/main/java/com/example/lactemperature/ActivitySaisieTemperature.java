@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import java.util.Locale;
 public class ActivitySaisieTemperature extends Activity {
 
     final String[] leLac= new String[1];
+    final String[] laTemp= new String[1];
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,8 @@ public class ActivitySaisieTemperature extends Activity {
         Button buttonSaisieTemperatureValider = findViewById(R.id.buttonSaisieTemperatureValider);
         Button buttonSaisieTemperatureAnnuler = findViewById(R.id.buttonSaisieTemperatureAnnuler);
 
+        final EditText Date = findViewById(R.id.dateReleve);
+        final EditText temperature = findViewById(R.id.editTextTemperatureSaisie);
 
         //on place un écouteur dessus:
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
@@ -43,7 +47,11 @@ public class ActivitySaisieTemperature extends Activity {
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
                         Intent i = new Intent (ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
-                        //i.putExtra("EXTRA_CPT",);
+                        i.putExtra("EXTRA_LAC",leLac[0]);
+                        i.putExtra("EXTRA_TEMP",laTemp[0]);
+                        i.putExtra("EXTRA_DATE",Date.getText().toString());
+                        i.putExtra("EXTRA_TEMPERATURE",temperature.getText().toString());
+
                         startActivity(i);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
@@ -61,7 +69,37 @@ public class ActivitySaisieTemperature extends Activity {
         buttonSaisieTemperatureValider.setOnClickListener(ecouteur1);
         buttonSaisieTemperatureAnnuler.setOnClickListener(ecouteur1);
 
+        //programmation des boutons radios
+        RadioGroup radioGroupTemp = findViewById(R.id.radioGroupSaisieTemp);
+        radioGroupTemp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup radioGroupTemp,int i){
+                switch (i) {
+                    case R.id.radioButtonSaisie6:
+                        Toast.makeText(getApplicationContext(), " 6h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="6";
+                        break;
+                    case R.id.radioButtonSaisie12:
+                        Toast.makeText(getApplicationContext(), " 12h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="12";
+                        break;
+                    case R.id.radioButtonSaisie18:
 
+                        Toast.makeText(getApplicationContext(), " 18h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="18";
+                        break;
+                    case R.id.radioButtonSaisie24:
+
+                        Toast.makeText(getApplicationContext(), " 24h",
+                                Toast.LENGTH_LONG).show();
+                        laTemp[0] ="24";
+                        break;
+                }
+            }
+
+        });
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerSaisieLac);

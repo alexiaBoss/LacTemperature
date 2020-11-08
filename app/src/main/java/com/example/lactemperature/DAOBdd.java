@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DAOBdd {
 
-    static final int VERSION_BDD =4;
+    static final int VERSION_BDD =5;
     private static final String NOM_BDD = "bddLacTemperature.db";
 
     //table Lac
@@ -125,20 +125,24 @@ public class DAOBdd {
         return db.insert(TABLE_RELEVE, null, values);
     }
     private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé
+
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
         //Sinon
-        c.moveToFirst(); //on se place sur le premier élément
-        Releve unReleve = new Releve(0,0,0,0,0,0, null); //On créé un relevé
-        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        unReleve.setJour(c.getInt(NUM_COL_JOUR));
-        unReleve.setMois(c.getInt(NUM_COL_MOIS));
-        unReleve.setTempA6h(c.getDouble(NUM_COL_TEMPA6H));
-        unReleve.setTempA12h(c.getDouble(NUM_COL_TEMPA12H));
-        unReleve.setTempA18h(c.getDouble(NUM_COL_TEMPA18H));
-        unReleve.setTempA24h(c.getDouble(NUM_COL_TEMPA24H));
-        unReleve.setNomLac(c.getString(NUM_COL_NOMLACRELEVE));
+        c.moveToLast();
+
+            //on se place sur le premier élément
+            Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null); //On créé un relevé
+
+            //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+
+            unReleve.setTempA6h(c.getDouble(0));
+            unReleve.setTempA12h(c.getDouble(1));
+            unReleve.setTempA18h(c.getDouble(2));
+            unReleve.setTempA24h(c.getDouble(3));
+
+
         c.close(); //On ferme le cursor
         return unReleve; //On retourne le relevé
     }
@@ -177,6 +181,19 @@ public class DAOBdd {
         return lesReleves;
 
     }
+
+    public Releve getReleveWithMoisAndJourAndLac(String nomLac, int mois, int jour){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR,COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
+        return cursorToReleve(c);
+    }
+
+    public Releve getTempByLacAndHeureAndDate(String nomLac, int mois, int jour){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
+        return cursorToReleve(c);
+    }
+
     public Cursor getDataReleve(){
         return db.rawQuery("SELECT * FROM treleve", null);
     }
