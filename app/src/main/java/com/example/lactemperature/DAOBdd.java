@@ -10,10 +10,12 @@ import com.example.lactemperature.Lac;
 
 public class DAOBdd {
 
+    // version de la bdd :
     static final int VERSION_BDD =2;
+    // nom de la base de données
     private static final String NOM_BDD = "bddLacTemperature.db";
 
-    //table Lac
+    // colonnes de la table Lac
     static final String TABLE_LAC = "tlac";
     static final String COL_ID = "_id";
     static final int NUM_COL_ID = 0;
@@ -24,7 +26,7 @@ public class DAOBdd {
     static final String COL_LATITUDE = "Latitude";
     static final int NUM_COL_LATITUDE = 3;
 
-    //table relevé
+    // colonnes de la table relevé
     static final String TABLE_RELEVE = "treleve";
     static final String COL_IDRELEVE = "_id";
     static final int NUM_COL_IDRELEVE = 0;
@@ -44,11 +46,12 @@ public class DAOBdd {
     static final int NUM_COL_NOMLACRELEVE = 7;
 
 
-
+    // attributs permettant la création de la table lac dans la base
     private CreateBdd tableLac;
     private Context context;
     private SQLiteDatabase db;
-    //le constructeur
+
+    //le constructeur de la base de données
     public DAOBdd(Context context){
         this.context = context;
         tableLac = new CreateBdd(context, NOM_BDD, null, VERSION_BDD);
@@ -58,6 +61,7 @@ public class DAOBdd {
     // dans les 2 cas l’appel à getWritableDatabase ou getReadableDatabase renverra la base
     // de données en cache, nouvellement ouverte, nouvellement créée ou mise à jour
     //les méthodes d'instance
+
     public DAOBdd open(){
         db = tableLac.getWritableDatabase();
         return this;
@@ -66,6 +70,7 @@ public class DAOBdd {
         db.close();
         return null;
     }
+
     public long insererLac (Lac unLac){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -76,6 +81,7 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_LAC, null, values);
     }
+
     public Lac cursorToArticle(Cursor c){ //Cette méthode permet de convertir un cursor en un lac
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -90,6 +96,7 @@ public class DAOBdd {
         c.close(); //On ferme le cursor
         return unLac; //On retourne le lac
     }
+
     public Lac getLacWithNomLac(String nomLac){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation)
         Cursor c = db.query(TABLE_LAC, new String[] {COL_ID,COL_NOMLAC, COL_LONGITUDE, COL_LATITUDE}, COL_NOMLAC + " LIKE \"" + nomLac +"\"", null, null, null, null);
@@ -99,7 +106,8 @@ public class DAOBdd {
 
 
     public Cursor getDataLac(){
-        return db.rawQuery("SELECT * FROM tlac", null);
+        return db.rawQuery("" +
+                "SELECT * FROM tlac", null);
     }
 
 
@@ -118,6 +126,7 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_RELEVE, null, values);
     }
+
     private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -136,13 +145,17 @@ public class DAOBdd {
         c.close(); //On ferme le cursor
         return unReleve; //On retourne le relevé
     }
+
+
     public Releve getReleveWithMoisAndLac(String nomLac, int mois){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois
         Cursor c = db.query(TABLE_RELEVE, new String[] {COL_IDRELEVE,COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " = \"" + nomLac +"\"" + COL_MOIS + " = \"" + mois + "\"", null, null, null, null);
         return cursorToReleve(c);
     }
+
     public Cursor getDataReleve(){
-        return db.rawQuery("SELECT * FROM treleve", null);
+        return db.rawQuery(
+                "SELECT * FROM treleve", null);
     }
 }
 

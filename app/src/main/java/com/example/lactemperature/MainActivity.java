@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         lacBdd.insererLac(lac10);
         //le curseur pour afficher le nombre de Lac dans la base
         Cursor c = lacBdd.getDataLac();
-        Toast.makeText(getApplicationContext(), " il y a " + c.getCount() + " lacs ", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), " il y a " + c.getCount() +
+                " lacs ", Toast.LENGTH_LONG).show();
     }
 
     public void remplirTableReleve() {
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         releveBdd.insererReleve(releve1);
         releveBdd.insererReleve(releve2);
         releveBdd.insererReleve(releve3);
+        releveBdd.insererReleve(releve4);
         releveBdd.insererReleve(releve5);
         releveBdd.insererReleve(releve6);
         releveBdd.insererReleve(releve7);

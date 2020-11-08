@@ -49,27 +49,38 @@ public class ActivityListeLac extends Activity {
         buttonRetourListeLac.setOnClickListener(ecouteur1);
 
         //gestion de la liste déroulante des lacs
+        // déclaration et instanciation du spinner
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerNomLacListeLac);
+        // on instancie le DAO
         final DAOBdd lacbdd = new DAOBdd(this);
+        // On ouvre le DAO
         lacbdd.open();
+        // On récupère les données des lacs dans un curseur
         Cursor c = lacbdd.getDataLac();
+        // Déclaration et instanciation d'une liste
         ArrayList<String> leslacs = new ArrayList<String>();
+        // Sélection du premier élément du curseur
         if(c.moveToFirst()) {
+            // Si le curseur n'est pas vide
             if (c.getCount() != 0) {
-
+                // On ajoute les lacs
                 while (!c.isAfterLast()) {
                     leslacs.add(c.getString(1)); //add the item
                     c.moveToNext();
                 }
             }
         }
+
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, leslacs);
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAfficheLac.setAdapter(dataAdapterR);
+
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // l'item selectionné va dans une variable leLac[]
                 leLac[0] = valueOf(spinnerAfficheLac.getSelectedItem());
-                Toast.makeText(ActivityListeLac.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityListeLac.this, "Vous avez choisie : " + "\n" + leLac[0],
+                        Toast.LENGTH_SHORT).show();
                 //Remplissage des champs pour la longitude et la latitude.
                 Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
                 TextView longitude = findViewById(R.id.textViewLongitude);

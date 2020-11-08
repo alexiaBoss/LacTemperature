@@ -1,16 +1,20 @@
 package com.example.lactemperature;
 
 public class Lac {
+
+    // constructeur d'un Lac
     public Lac(String nomLac, double longitude, double latitude) {
         this.nomLac = nomLac;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
+    // attributs de la classe Lac
     protected String nomLac;
     protected double longitude;
     protected double latitude;
 
+    //Accesseurs et Mutateurs
     public String getNomLac() {
         return nomLac;
     }
