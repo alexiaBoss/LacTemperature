@@ -58,7 +58,7 @@ public class ActivityAfficheMoyenneReleve extends Activity{
         for (i2 = 1; i2 < lesTemperatures.size(); i2++) {
             sum += lesTemperatures.get(i);
         }
-        double moyenne = sum / (i2 - 1);
+        double moyenne = sum / (i2);
         DecimalFormat f = new DecimalFormat();
         f.setMaximumFractionDigits(2);
 

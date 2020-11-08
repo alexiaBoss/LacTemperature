@@ -8,15 +8,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompatSideChannelService;
+
 public class ActivityAfficheSaisieTemperature extends Activity {
+    public Releve leReleveInser = new Releve(0,0,0,0,0,0,null);
+    public Releve leReleveUpdate = new Releve(0,0,0,0,0,0,null);
+    String date = "";
+    String lac = "";
+   String temp = "";
+    String temperature = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_valider_saisie_temperature);
 
-        String date = "";
-        String lac = "";
-        String temp = "";
-        String temperature = "";
+
 //on va récupérer les trois valeurs provenant de NewReleveActivity
         Intent intent = getIntent();
         if (intent != null) {
@@ -40,8 +45,28 @@ public class ActivityAfficheSaisieTemperature extends Activity {
 
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
-        String[] separated = date.split("/");
+        final String[] separated = date.split("/");
         final Releve unReleve = lacbdd.getReleveWithMoisAndJourAndLac(lac,Integer.valueOf(separated[0]),Integer.valueOf(separated[1]));
+
+
+        if (temp.equals("6")) {
+              leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),Double.valueOf(temperature),0,0,0,lac);
+        }
+        if (temp.equals("12")) {
+             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,Double.valueOf(temperature),0,0,lac);
+        }
+        if (temp.equals("18")) {
+             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,0,Double.valueOf(temperature),0,lac);
+        }
+        if (temp.equals("24")) {
+             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,0,0,Double.valueOf(temperature),lac);
+        }
+
+
+
+
+
+
 
         // gestion des boutons
         Button buttonSaisieTemperatureValider = findViewById(R.id.buttonValiderSaisieTemperature);
@@ -56,8 +81,23 @@ public class ActivityAfficheSaisieTemperature extends Activity {
                 switch (v.getId()) {
                     case R.id.buttonValiderSaisieTemperature:
                         // enregistrer les données dans la base
-                        
-
+                        if(unReleve.getJour()==0){
+                            lacbdd.insererReleve(leReleveInser);
+                        }
+                        else{
+                            if(temp.equals("6")){
+                                lacbdd.updateReleve6h(lac, Integer.valueOf(separated[0]), Integer.valueOf(separated[1]), Double.valueOf(temperature));
+                            }
+                            if(temp.equals("12")){
+                                lacbdd.updateReleve12h(lac, Integer.valueOf(separated[0]), Integer.valueOf(separated[1]), Double.valueOf(temperature));
+                            }
+                            if(temp.equals("18")){
+                                lacbdd.updateReleve18h(lac, Integer.valueOf(separated[0]), Integer.valueOf(separated[1]), Double.valueOf(temperature));
+                            }
+                            if(temp.equals("24")){
+                                lacbdd.updateReleve24h(lac, Integer.valueOf(separated[0]), Integer.valueOf(separated[1]), Double.valueOf(temperature));
+                            }
+                        }
 
                         finish();
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();

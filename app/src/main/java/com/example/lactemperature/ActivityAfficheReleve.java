@@ -10,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivityAfficheReleve extends Activity {
+
+    Releve unReleve = new Releve(0,0,0,0,0,0,null);
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_releve_temperature);
@@ -42,7 +45,8 @@ public class ActivityAfficheReleve extends Activity {
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
         String[] separated = date.split("/");
-        Releve unReleve = lacbdd.getTempByLacAndHeureAndDate(lac,Integer.valueOf(separated[0]),Integer.valueOf(separated[1]));
+
+         unReleve = lacbdd.getTempByLacAndHeureAndDate(lac,Integer.valueOf(separated[0]),Integer.valueOf(separated[1]));
         double textTemp = 0;
         if (temp.equals("6")) {
              textTemp = unReleve.getTempA6h();
