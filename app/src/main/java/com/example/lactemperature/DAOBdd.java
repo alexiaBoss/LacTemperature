@@ -152,7 +152,7 @@ public class DAOBdd {
             //Sinon
 
             c.moveToFirst();
-            c.moveToNext();//on se place sur le premier élément
+            //on se place sur le premier élément
             while (c.moveToNext()) {
                 Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null); //On créé un relevé
                 //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
