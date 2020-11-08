@@ -7,15 +7,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.example.lactemperature.Lac;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 
 public class DAOBdd {
 
-    // version de la bdd :
-    static final int VERSION_BDD =2;
-    // nom de la base de données
+    static final int VERSION_BDD =4;
     private static final String NOM_BDD = "bddLacTemperature.db";
 
-    // colonnes de la table Lac
+    //table Lac
     static final String TABLE_LAC = "tlac";
     static final String COL_ID = "_id";
     static final int NUM_COL_ID = 0;
@@ -26,13 +27,13 @@ public class DAOBdd {
     static final String COL_LATITUDE = "Latitude";
     static final int NUM_COL_LATITUDE = 3;
 
-    // colonnes de la table relevé
+    //table relevé
     static final String TABLE_RELEVE = "treleve";
     static final String COL_IDRELEVE = "_id";
     static final int NUM_COL_IDRELEVE = 0;
     static final String COL_JOUR = "Jour";
     static final int NUM_COL_JOUR = 1;
-    static final String COL_MOIS = "MOIS";
+    static final String COL_MOIS = "Mois";
     static final int NUM_COL_MOIS = 2;
     static final String COL_TEMPA6H = "TempA6h";
     static final int NUM_COL_TEMPA6H = 3;
@@ -46,12 +47,11 @@ public class DAOBdd {
     static final int NUM_COL_NOMLACRELEVE = 7;
 
 
-    // attributs permettant la création de la table lac dans la base
+
     private CreateBdd tableLac;
     private Context context;
     private SQLiteDatabase db;
-
-    //le constructeur de la base de données
+    //le constructeur
     public DAOBdd(Context context){
         this.context = context;
         tableLac = new CreateBdd(context, NOM_BDD, null, VERSION_BDD);
@@ -61,7 +61,6 @@ public class DAOBdd {
     // dans les 2 cas l’appel à getWritableDatabase ou getReadableDatabase renverra la base
     // de données en cache, nouvellement ouverte, nouvellement créée ou mise à jour
     //les méthodes d'instance
-
     public DAOBdd open(){
         db = tableLac.getWritableDatabase();
         return this;
@@ -70,7 +69,6 @@ public class DAOBdd {
         db.close();
         return null;
     }
-
     public long insererLac (Lac unLac){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -81,7 +79,6 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_LAC, null, values);
     }
-
     public Lac cursorToArticle(Cursor c){ //Cette méthode permet de convertir un cursor en un lac
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -97,6 +94,8 @@ public class DAOBdd {
         return unLac; //On retourne le lac
     }
 
+
+
     public Lac getLacWithNomLac(String nomLac){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation)
         Cursor c = db.query(TABLE_LAC, new String[] {COL_ID,COL_NOMLAC, COL_LONGITUDE, COL_LATITUDE}, COL_NOMLAC + " LIKE \"" + nomLac +"\"", null, null, null, null);
@@ -106,8 +105,7 @@ public class DAOBdd {
 
 
     public Cursor getDataLac(){
-        return db.rawQuery("" +
-                "SELECT * FROM tlac", null);
+        return db.rawQuery("SELECT * FROM tlac", null);
     }
 
 
@@ -126,7 +124,6 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_RELEVE, null, values);
     }
-
     private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -146,16 +143,41 @@ public class DAOBdd {
         return unReleve; //On retourne le relevé
     }
 
+    public ArrayList<Releve> cursortoListeReleve(Cursor c) {
+        ArrayList<Releve> lesReleves = new ArrayList<>();
 
-    public Releve getReleveWithMoisAndLac(String nomLac, int mois){
-        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois
-        Cursor c = db.query(TABLE_RELEVE, new String[] {COL_IDRELEVE,COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " = \"" + nomLac +"\"" + COL_MOIS + " = \"" + mois + "\"", null, null, null, null);
-        return cursorToReleve(c);
+        if (c.getCount() > 0) {
+
+
+            //Sinon
+
+            c.moveToFirst(); //on se place sur le premier élément
+            while (!c.isAfterLast()) {
+                Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null); //On créé un relevé
+                //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+                unReleve.setJour(c.getInt(NUM_COL_JOUR));
+                unReleve.setMois(c.getInt(NUM_COL_MOIS));
+                unReleve.setTempA6h(c.getDouble(NUM_COL_TEMPA6H));
+                unReleve.setTempA12h(c.getDouble(NUM_COL_TEMPA12H));
+                unReleve.setTempA18h(c.getDouble(NUM_COL_TEMPA18H));
+                unReleve.setTempA24h(c.getDouble(NUM_COL_TEMPA24H));
+                unReleve.setNomLac(c.getString(NUM_COL_NOMLACRELEVE));
+                lesReleves.add(unReleve);
+
+            }
+        }
+        c.close();
+        return lesReleves;
     }
+    public ArrayList<Releve> getReleveWithMoisAndLac(String nomLac, int mois){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, Lac;
+        Cursor c = db.query(TABLE_RELEVE, new String[] {COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois, null, null, null, null);
+        ArrayList <Releve> lesReleves = cursortoListeReleve(c);
+        return lesReleves;
 
+    }
     public Cursor getDataReleve(){
-        return db.rawQuery(
-                "SELECT * FROM treleve", null);
+        return db.rawQuery("SELECT * FROM treleve", null);
     }
 }
 
