@@ -2,20 +2,51 @@ package com.example.lactemperature;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.ArrayList;
+
 
 public class ActivityAfficheMoyenneReleve extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_moyenne_releve_temperature);
+
+        String lac= "";
+        int mois = 0;
+
+//on va récupérer des valeur de AfficherMoyenneReleves
+        Intent intent = getIntent();
+        if (intent != null) {
+            lac= intent.getStringExtra("EXTRA_LAC");
+            mois=intent.getIntExtra("EXTRA_MOIS", 0);
+        }
+
+        TextView textLac = findViewById(R.id.TextViewMoyenneLac);
+        textLac.setText(lac);
+
+
+        final DAOBdd lacbdd = new DAOBdd(this);
+        lacbdd.open();
+        ArrayList<Releve> lesReleves = new ArrayList<Releve>();
+        lesReleves = lacbdd.getReleveWithMoisAndLac(lac,mois);
+        Releve unReleve = new Releve(0,0,0,0,0,0,null);
+
+        unReleve = lesReleves.get(0);
+
+
+        TextView textMoyenne = findViewById(R.id.TextViewMoyenneReleveReponse);
+        textMoyenne.setText(unReleve.toString());
+
         // gestion des boutons
         Button buttonSaisieTemperatureValider = findViewById(R.id.buttonRetour);
 

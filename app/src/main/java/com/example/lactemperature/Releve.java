@@ -75,4 +75,17 @@ public class Releve {
     public void setNomLac(String nomLac) {
         this.nomLac = nomLac;
     }
+
+    @Override
+    public String toString() {
+        return "Releve{" +
+                "jour=" + jour +
+                ", mois=" + mois +
+                ", tempA6h=" + tempA6h +
+                ", tempA12h=" + tempA12h +
+                ", tempA18h=" + tempA18h +
+                ", tempA24h=" + tempA24h +
+                ", nomLac='" + nomLac + '\'' +
+                '}';
+    }
 }
