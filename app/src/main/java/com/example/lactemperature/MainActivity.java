@@ -136,6 +136,38 @@ public class MainActivity extends AppCompatActivity {
         Releve releve33 = new Releve(11, 5, 15.8,16.2,16.6,16.1, "Lac de Oô");
         Releve releve34 = new Releve(12, 5, 15.8,15.6,15.6,15.1, "Lac de Oô");
 
+        // Relevés de Janvier sur le Lac d'Oô ( POUR LE JEU D'ESSAI)
+        Releve releve35 = new Releve(1, 1, 6.2, 6.5, 7.2, 7.1, "Lac de Oô");
+        Releve releve36 = new Releve(2, 1, 6.4, 6.9, 8.0, 8.1, "Lac de Oô");
+        Releve releve37 = new Releve(3, 1, 8.6, 8.4, 8.8, 8.5, "Lac de Oô");
+        Releve releve38 = new Releve(4, 1, 6.2, 4.5, 4.2, 7.1, "Lac de Oô");
+        Releve releve39 = new Releve(5, 1, 6.2, 6.8, 7.8, 5.8, "Lac de Oô");
+        Releve releve40 = new Releve(6, 1, 8.5, 4.5, 7.2, 4.3, "Lac de Oô");
+        Releve releve41 = new Releve(7, 1, 8.2, 5.8, 3.8, 3.1, "Lac de Oô");
+        Releve releve42 = new Releve(8, 1, 4.5, 6.5, 7.8, 4.1, "Lac de Oô");
+        Releve releve43 = new Releve(9, 1, 6.0, 6.5, 7.2, 4.2, "Lac de Oô");
+        Releve releve44 = new Releve(10, 1, 6.2, 6.5, 7.2, 4.1, "Lac de Oô");
+        Releve releve45 = new Releve(11, 1, 6.2, 6.0, 7.0, 6.1, "Lac de Oô");
+        Releve releve46 = new Releve(12, 1, 5.2, 5.5, 5.8, 6.9, "Lac de Oô");
+        Releve releve47 = new Releve(13, 1, 6.0, 6.5, 7.4, 5.3, "Lac de Oô");
+        Releve releve48 = new Releve(14, 1, 6.7, 6.8, 7.7, 6.1, "Lac de Oô");
+        Releve releve49 = new Releve(15, 1, 4.2, 4.5, 6.9, 7.2, "Lac de Oô");
+        Releve releve50 = new Releve(16, 1, 7.4, 5.7, 6.1, 7.1, "Lac de Oô");
+        Releve releve51 = new Releve(17, 1, 6.5, 4.5, 7.7, 8.3, "Lac de Oô");
+        Releve releve52 = new Releve(18, 1, 6.8, 3.8, 7.8, 8.8, "Lac de Oô");
+        Releve releve53 = new Releve(19, 1, 6.2, 6.5, 7.1, 7.3, "Lac de Oô");
+        Releve releve54 = new Releve(20, 1, 4.4, 6.4, 7.5, 5.1, "Lac de Oô");
+        Releve releve55 = new Releve(21, 1, 6.5, 5.5, 7.2, 4.1, "Lac de Oô");
+        Releve releve56 = new Releve(22, 1, 6.2, 6.7, 5.7, 5.3, "Lac de Oô");
+        Releve releve57 = new Releve(23, 1, 8.3, 6.5, 7.4, 7.2, "Lac de Oô");
+        Releve releve58 = new Releve(24, 1, 6.2, 4.5, 6.2, 5.8, "Lac de Oô");
+        Releve releve59 = new Releve(25, 1, 8.2, 5.5, 7.5, 5.1, "Lac de Oô");
+        Releve releve60 = new Releve(26, 1, 6.3, 6.5, 7.4, 5.8, "Lac de Oô");
+        Releve releve61 = new Releve(27, 1, 8.6, 6.5, 7.2, 4.1, "Lac de Oô");
+        Releve releve62 = new Releve(28, 1, 6.0, 6.2, 6.8, 6.1, "Lac de Oô");
+        Releve releve63 = new Releve(29, 1, 7.2, 3.8, 8.2, 7.1, "Lac de Oô");
+        Releve releve64 = new Releve(30, 1, 6.2, 3.8, 7.4, 9.1, "Lac de Oô");
+        Releve releve65 = new Releve(31, 1, 6.7, 3.9, 8.2, 8.1, "Lac de Oô");
         //on ouvre la base de données
         releveBdd.open();
         //on insère tout les relevés
@@ -175,6 +207,40 @@ public class MainActivity extends AppCompatActivity {
         releveBdd.insererReleve(releve32);
         releveBdd.insererReleve(releve33);
         releveBdd.insererReleve(releve34);
+
+        // Ajout des relevés de Janvier sur le Lac d'Oô ( POUR LE JEU D'ESSAI)
+        releveBdd.insererReleve(releve35);
+        releveBdd.insererReleve(releve36);
+        releveBdd.insererReleve(releve37);
+        releveBdd.insererReleve(releve38);
+        releveBdd.insererReleve(releve39);
+        releveBdd.insererReleve(releve40);
+        releveBdd.insererReleve(releve41);
+        releveBdd.insererReleve(releve42);
+        releveBdd.insererReleve(releve43);
+        releveBdd.insererReleve(releve44);
+        releveBdd.insererReleve(releve45);
+        releveBdd.insererReleve(releve46);
+        releveBdd.insererReleve(releve47);
+        releveBdd.insererReleve(releve48);
+        releveBdd.insererReleve(releve49);
+        releveBdd.insererReleve(releve50);
+        releveBdd.insererReleve(releve51);
+        releveBdd.insererReleve(releve52);
+        releveBdd.insererReleve(releve53);
+        releveBdd.insererReleve(releve54);
+        releveBdd.insererReleve(releve55);
+        releveBdd.insererReleve(releve56);
+        releveBdd.insererReleve(releve57);
+        releveBdd.insererReleve(releve58);
+        releveBdd.insererReleve(releve59);
+        releveBdd.insererReleve(releve60);
+        releveBdd.insererReleve(releve61);
+        releveBdd.insererReleve(releve62);
+        releveBdd.insererReleve(releve63);
+        releveBdd.insererReleve(releve64);
+        releveBdd.insererReleve(releve65);
+
         //le curseur pour afficher le nombre de relevés dans la base
         Cursor c = releveBdd.getDataReleve();
         Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " releve ", Toast.LENGTH_LONG).show();
