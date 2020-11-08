@@ -95,7 +95,7 @@ public class ActivityAfficheMoyenneReleve extends Activity{
 
 
 
-
+        // Affichage du graphique de la moyenne
             int count = lesTemperatures.size();
             DataPoint[] values = new DataPoint[count];
             for (int i4=0; i4<count; i4++) {
