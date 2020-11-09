@@ -25,7 +25,6 @@ public class ActivityAfficherReleve extends Activity {
 
 
     final String[] leLac= new String[1];
-    final String[] laTemp= new String[1];
     final String[] leSigne= new String[1];
 
 
@@ -50,7 +49,6 @@ public class ActivityAfficherReleve extends Activity {
                         //on passer les infos dans l'autre interface
                         Intent i = new Intent (ActivityAfficherReleve.this, ActivityAfficheReleve.class);
                         i.putExtra("EXTRA_LAC",leLac[0]);
-                        i.putExtra("EXTRA_TEMP",laTemp[0]);
                         i.putExtra("EXTRA_DATE",Date.getText().toString());
                         i.putExtra("EXTRA_SIGNE",leSigne[0]);
                         startActivityForResult(i, 0);
@@ -70,37 +68,10 @@ public class ActivityAfficherReleve extends Activity {
         buttonAfficherReleveValider.setOnClickListener(ecouteur1);
         buttonAfficherReleveAnnuler.setOnClickListener(ecouteur1);
 
-        //programmation des boutons radios
-        RadioGroup radioGroupTemp = findViewById(R.id.radioGroupAfficheReleve);
-        radioGroupTemp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged (RadioGroup radioGroupTemp,int i){
-                switch (i) {
-                    case R.id.radioButtonAffiche6:
-                        Toast.makeText(getApplicationContext(), " 6h",
-                                Toast.LENGTH_LONG).show();
-                        laTemp[0] ="6";
-                        break;
-                    case R.id.radioButtonAffiche12:
-                        Toast.makeText(getApplicationContext(), " 12h",
-                                Toast.LENGTH_LONG).show();
-                        laTemp[0] ="12";
-                        break;
-                    case R.id.radioButtonAffiche18:
 
-                        Toast.makeText(getApplicationContext(), " 18h",
-                                Toast.LENGTH_LONG).show();
-                        laTemp[0] ="18";
-                        break;
-                    case R.id.radioButtonAffiche24:
 
-                        Toast.makeText(getApplicationContext(), " 24h",
-                                Toast.LENGTH_LONG).show();
-                        laTemp[0] ="24";
-                        break;
-                }
-            }
 
-        });
+
 
 //programmation des boutons radios
         RadioGroup radioGroupSigne = findViewById(R.id.radioGroupSigne);

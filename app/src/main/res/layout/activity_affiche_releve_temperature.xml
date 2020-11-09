@@ -32,7 +32,7 @@
                     android:text="Ce relevé est effectué le : " />
 
                 <TextView
-                    android:id="@+id/textViewTextPersonName"
+                    android:id="@+id/textViewDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:editable="false"
@@ -202,36 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="15dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text="La température mesurée est : " />
-
-                <TextView
-                    android:id="@+id/TextViewTextPersonName3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/texteRentre"
-                    android:text="12" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text=" °C / °F" />
-            </LinearLayout>
-
-        </LinearLayout>
+            android:paddingTop="15dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
