@@ -28,6 +28,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:editable="false"
+            android:text="01/01/2021"
             style="@style/texteRentre"
             android:hint="@string/DateReleve" />
 
@@ -192,8 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="numberDecimal"
-                style="@style/texteRentre"
-                android:text="" />
+                style="@style/texteRentre" />
 
             <TextView
                 android:id="@+id/textView2"

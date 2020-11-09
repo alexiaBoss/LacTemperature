@@ -34,7 +34,7 @@
                     android:text="Ce relevé est effectué le : " />
 
                 <TextView
-                    android:id="@+id/TextViewTextPersonName"
+                    android:id="@+id/TextViewDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/texteRentre"

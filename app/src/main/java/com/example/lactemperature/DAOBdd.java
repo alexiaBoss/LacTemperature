@@ -124,21 +124,74 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_RELEVE, null, values);
     }
+
+    public long updateReleve6h (String nomLac, int mois, int jour , double temp){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_TEMPA6H, temp);
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
+    }
+
+    public long updateReleve12h (String nomLac, int mois, int jour , double temp){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_TEMPA12H, temp);
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
+    }
+
+    public long updateReleve18h (String nomLac, int mois, int jour , double temp){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_TEMPA18H, temp);
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
+    }
+
+    public long updateReleve24h (String nomLac, int mois, int jour , double temp){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_TEMPA24H, temp);
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
+    }
+
+
+
+
+
+
+
+
     private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé
+
         //si aucun élément n'a été retourné dans la requête, on renvoie null
-        if (c.getCount() == 0)
-            return null;
+        if (c.getCount() == 0) {
+            Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null);
+            return unReleve;
+        }
         //Sinon
-        c.moveToFirst(); //on se place sur le premier élément
-        Releve unReleve = new Releve(0,0,0,0,0,0, null); //On créé un relevé
-        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        unReleve.setJour(c.getInt(NUM_COL_JOUR));
-        unReleve.setMois(c.getInt(NUM_COL_MOIS));
-        unReleve.setTempA6h(c.getDouble(NUM_COL_TEMPA6H));
-        unReleve.setTempA12h(c.getDouble(NUM_COL_TEMPA12H));
-        unReleve.setTempA18h(c.getDouble(NUM_COL_TEMPA18H));
-        unReleve.setTempA24h(c.getDouble(NUM_COL_TEMPA24H));
-        unReleve.setNomLac(c.getString(NUM_COL_NOMLACRELEVE));
+        c.moveToLast();
+
+            //on se place sur le premier élément
+            Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null); //On créé un relevé
+
+            //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+
+            unReleve.setJour(c.getInt(0));
+            unReleve.setMois(c.getInt(1));
+            unReleve.setTempA6h(c.getDouble(2));
+            unReleve.setTempA12h(c.getDouble(3));
+            unReleve.setTempA18h(c.getDouble(4));
+            unReleve.setTempA24h(c.getDouble(5));
+            unReleve.setNomLac(c.getString(6));
+
+
         c.close(); //On ferme le cursor
         return unReleve; //On retourne le relevé
     }
@@ -147,9 +200,6 @@ public class DAOBdd {
         ArrayList<Releve> lesReleves = new ArrayList<>();
 
         if (c.getCount() > 0) {
-
-
-            //Sinon
 
             c.moveToFirst();
             //on se place sur le premier élément
@@ -177,6 +227,19 @@ public class DAOBdd {
         return lesReleves;
 
     }
+
+    public Releve getReleveWithMoisAndJourAndLac(String nomLac, int mois, int jour){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR,COL_MOIS,COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
+        return cursorToReleve(c);
+    }
+
+    public Releve getTempByLacAndHeureAndDate(String nomLac, int mois, int jour){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
+        return cursorToReleve(c);
+    }
+
     public Cursor getDataReleve(){
         return db.rawQuery("SELECT * FROM treleve", null);
     }
