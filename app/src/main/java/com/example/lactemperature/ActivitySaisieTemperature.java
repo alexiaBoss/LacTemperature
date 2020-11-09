@@ -30,6 +30,7 @@ public class ActivitySaisieTemperature extends Activity {
 
     final String[] leLac= new String[1];
     final String[] laTemp= new String[1];
+
     final Context context = this;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class ActivitySaisieTemperature extends Activity {
 
         final EditText Date = findViewById(R.id.dateReleve);
         final EditText temperature = findViewById(R.id.editTextTemperatureSaisie);
+        laTemp[0]= "";
 
         //on place un écouteur dessus:
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
@@ -54,7 +56,8 @@ public class ActivitySaisieTemperature extends Activity {
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
                        String veriftemperature = temperature.getText().toString();
-                        if(veriftemperature.length() != 0)
+                       String heure = laTemp[0];
+                        if(veriftemperature.length() != 0 && heure.length() != 0)
                     {
 
 
@@ -75,7 +78,7 @@ public class ActivitySaisieTemperature extends Activity {
 
                             //set dialog message
                             alertDialogBuilder
-                                    .setMessage("Vous n'avez pas rempli le champs de la température")
+                                    .setMessage("Vous n'avez pas rempli le champs de la température et/ou pas coché d'horaire ")
                                     .setCancelable(false)
                                     .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog,int id) {

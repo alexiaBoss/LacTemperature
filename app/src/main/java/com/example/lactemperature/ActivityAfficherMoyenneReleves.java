@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
 
     final String[] leLac = new String[1];
     final int[] leMois = new int[1];
+    final String[] leSigne = new String[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
                         Intent i = new Intent(ActivityAfficherMoyenneReleves.this, ActivityAfficheMoyenneReleve.class);
                         i.putExtra("EXTRA_LAC",leLac[0]);
                         i.putExtra("EXTRA_MOIS",leMois[0]);
+                        i.putExtra("EXTRA_SIGNE",leSigne[0]);
 
 
                         startActivityForResult(i, 0);
@@ -108,6 +111,27 @@ public class ActivityAfficherMoyenneReleves extends Activity {
 
                 }
             });
+
+        //programmation des boutons radios
+        RadioGroup radioGroupSigne = findViewById(R.id.radioGroupSigne);
+        radioGroupSigne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged (RadioGroup radioGroupSigne,int i){
+                switch (i) {
+                    case R.id.radioButton:
+                        Toast.makeText(getApplicationContext(), " Degrés Celsius",
+                                Toast.LENGTH_LONG).show();
+                        leSigne[0] ="°C";
+                        break;
+                    case R.id.radioButton2:
+                        Toast.makeText(getApplicationContext(), " Degrés Fahrenheit",
+                                Toast.LENGTH_LONG).show();
+                        leSigne[0] ="°F";
+                        break;
+
+                }
+            }
+
+        });
 
 
         }
