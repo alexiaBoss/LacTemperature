@@ -57,7 +57,7 @@
                 style="@style/texte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="La température relevée à 6h est : " />
+                android:text="La température à 6h est : " />
 
             <TextView
                 android:id="@+id/textViewReleve6h"
@@ -90,7 +90,7 @@
                 style="@style/texte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="La température relevée à 12h est : " />
+                android:text="La température à 12h est : " />
 
             <TextView
                 android:id="@+id/textViewReleve12h"
@@ -123,7 +123,7 @@
                 style="@style/texte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="La température relevée à 18h est : " />
+                android:text="La température à 18h est : " />
 
             <TextView
                 android:id="@+id/textViewReleve18h"
@@ -156,7 +156,7 @@
                 style="@style/texte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="La température relevée à 24h est : " />
+                android:text="La température à 24h est : " />
 
             <TextView
                 android:id="@+id/textViewReleve24h"
