@@ -30,6 +30,8 @@
     <string name="BoutonListeLac">Liste des Lacs</string>
     <string name="longitude">Longitude</string>
     <string name="lattitude">Lattitude</string>
-    <string name="selectionnez_un_lac">Selectionnez un lac :</string>
+    <string name="selectionnez_un_lac">Selectionnez un lac : </string>
     <string name="menulisteLac">Liste des lacs</string>
+    <string name="lattitudeLac">Lattitude du lac : </string>
+    <string name="longitudeLac">Longitude du lac : </string>
 </resources>

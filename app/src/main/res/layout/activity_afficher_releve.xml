@@ -10,7 +10,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:paddingTop="7dp"
+        android:paddingTop="8dp"
         android:paddingRight="15dp"
         tools:layout_editor_absoluteY="25dp">
 
@@ -31,56 +31,7 @@
             style="@style/texteRentre"
             android:hint="@string/DateReleve" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingTop="25dp">
 
-            <TextView
-                android:id="@+id/textView4"
-                style="@style/texte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/QuestionHeure" />
-
-            <RadioGroup
-                android:id="@+id/radioGroupAfficheReleve"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <RadioButton
-                    android:id="@+id/radioButtonAffiche6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text="@string/sixh" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonAffiche12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text="@string/douzeh" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonAffiche18"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text="@string/dixhuith" />
-
-                <RadioButton
-                    android:id="@+id/radioButtonAffiche24"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/texte"
-                    android:text="@string/vingtquatreh" />
-            </RadioGroup>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingTop="15dp"
+            android:paddingTop="25dp"
             style="@style/texte"
             android:text="@string/questionUnite" />
 
@@ -148,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="25dp">
 
             <Button
                 android:id="@+id/buttonAfficherReleveValider"
