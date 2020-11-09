@@ -1,7 +1,10 @@
 package com.example.lactemperature;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -20,10 +24,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static java.lang.String.valueOf;
+
 public class ActivitySaisieTemperature extends Activity {
 
     final String[] leLac= new String[1];
     final String[] laTemp= new String[1];
+    final Context context = this;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +53,45 @@ public class ActivitySaisieTemperature extends Activity {
                     case R.id.buttonSaisieTemperatureValider:
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
-                        Intent i = new Intent (ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
-                        i.putExtra("EXTRA_LAC",leLac[0]);
-                        i.putExtra("EXTRA_TEMP",laTemp[0]);
-                        i.putExtra("EXTRA_DATE",Date.getText().toString());
-                        i.putExtra("EXTRA_TEMPERATURE",temperature.getText().toString());
+                       String veriftemperature = temperature.getText().toString();
+                        if(veriftemperature.length() != 0)
+                    {
+
+
+                        Intent i = new Intent(ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
+                        i.putExtra("EXTRA_LAC", leLac[0]);
+                        i.putExtra("EXTRA_TEMP", laTemp[0]);
+                        i.putExtra("EXTRA_DATE", Date.getText().toString());
+                        i.putExtra("EXTRA_TEMPERATURE", temperature.getText().toString());
 
                         startActivity(i);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
+                    }else{
+
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                            //set title
+                            alertDialogBuilder.setTitle("Alerte");
+
+                            //set dialog message
+                            alertDialogBuilder
+                                    .setMessage("Vous n'avez pas rempli le champs de la température")
+                                    .setCancelable(false)
+                                    .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,int id) {
+                                            //if this button is clicked, just close
+                                            //the dialog box and do nothing
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                            //create alert dialog
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+
+                            //show it
+                            alertDialog.show();
+                        }
+
                         break;
                     case R.id.buttonSaisieTemperatureAnnuler:
                         finish();
@@ -103,7 +141,7 @@ public class ActivitySaisieTemperature extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerSaisieLac);
-        DAOBdd lacbdd = new DAOBdd(this);
+        final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();
@@ -124,6 +162,12 @@ public class ActivitySaisieTemperature extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
                 Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
+                //Remplissage des champs pour la longitude et la latitude.
+                Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
+                TextView longitude = findViewById(R.id.textViewLongitudeLac);
+                longitude.setText(valueOf(lac.getLongitude()));
+                TextView latitude = findViewById(R.id.textViewLatitudeLac);
+                latitude.setText(valueOf(lac.getLatitude()));
             }
 
             @Override

@@ -44,43 +44,62 @@
                 style="@style/texte"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:text="@string/QuestionHeure" />
 
-            <RadioGroup
-                android:id="@+id/radioGroupSaisieTemp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
 
-                <RadioButton
-                    android:id="@+id/radioButtonSaisie6"
-                    style="@style/texte"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sixh" />
 
-                <RadioButton
-                    android:id="@+id/radioButtonSaisie12"
-                    style="@style/texte"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/douzeh" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButtonSaisie18"
-                    style="@style/texte"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dixhuith" />
+                    <RadioGroup
+                        android:id="@+id/radioGroupSaisieTemp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/radioButtonSaisie24"
-                    style="@style/texte"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vingtquatreh" />
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radioButtonSaisie6"
+                            style="@style/texte"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sixh"
+                            android:paddingRight="15dp"
+                            android:layout_weight="1"/>
+
+                        <RadioButton
+                            android:id="@+id/radioButtonSaisie12"
+                            style="@style/texte"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/douzeh"
+                            android:paddingRight="15dp"
+                            android:layout_weight="1"/>
+
+                        <RadioButton
+                            android:id="@+id/radioButtonSaisie18"
+                            style="@style/texte"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dixhuith"
+                            android:layout_weight="2"/>
+
+                        <RadioButton
+                            android:id="@+id/radioButtonSaisie24"
+                            style="@style/texte"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vingtquatreh"
+                            android:layout_weight="2"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
