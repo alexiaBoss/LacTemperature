@@ -58,7 +58,7 @@ public class ActivitySaisieTemperature extends Activity {
                        String veriftemperature = temperature.getText().toString();
                        String heure = laTemp[0];
                         if(veriftemperature.length() != 0 && heure.length() != 0)
-                    {
+                        {
 
 
                         Intent i = new Intent(ActivitySaisieTemperature.this, ActivityAfficheSaisieTemperature.class);
@@ -98,7 +98,9 @@ public class ActivitySaisieTemperature extends Activity {
                         break;
                     case R.id.buttonSaisieTemperatureAnnuler:
                         finish();
+
                         Toast.makeText(getApplicationContext(), "Annulation de la saisie", Toast.LENGTH_LONG).show();
+                        finish();
                         break;
 
 

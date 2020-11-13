@@ -1,7 +1,10 @@
 package com.example.lactemperature;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -27,7 +30,7 @@ public class ActivityAfficherReleve extends Activity {
     final String[] leLac= new String[1];
     final String[] leSigne= new String[1];
 
-
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class ActivityAfficherReleve extends Activity {
         Button buttonAfficherReleveValider = findViewById(R.id.buttonAfficherReleveValider);
         Button buttonAfficherReleveAnnuler = findViewById(R.id.buttonAfficherReleveAnnuler);
 
+        leSigne[0]= "";
+
+
         //on place un écouteur dessus:
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
             //on implémente la méthode onclick
@@ -47,12 +53,39 @@ public class ActivityAfficherReleve extends Activity {
                     case R.id.buttonAfficherReleveValider:
                         // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
-                        Intent i = new Intent (ActivityAfficherReleve.this, ActivityAfficheReleve.class);
-                        i.putExtra("EXTRA_LAC",leLac[0]);
-                        i.putExtra("EXTRA_DATE",Date.getText().toString());
-                        i.putExtra("EXTRA_SIGNE",leSigne[0]);
-                        startActivityForResult(i, 0);
-                        Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
+                        String signe = leSigne[0];
+                        if(signe.length() != 0) {
+                            Intent i = new Intent(ActivityAfficherReleve.this, ActivityAfficheReleve.class);
+                            i.putExtra("EXTRA_LAC", leLac[0]);
+                            i.putExtra("EXTRA_DATE", Date.getText().toString());
+                            i.putExtra("EXTRA_SIGNE", leSigne[0]);
+                            startActivityForResult(i, 0);
+                            Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
+                        }else{
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                        //set title
+                        alertDialogBuilder.setTitle("Alerte");
+
+                        //set dialog message
+                        alertDialogBuilder
+                                .setMessage("Vous n'avez pas coché votre unité ")
+                                .setCancelable(false)
+                                .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        //if this button is clicked, just close
+                                        //the dialog box and do nothing
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        //create alert dialog
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+
+                        //show it
+                        alertDialog.show();
+                    }
                         break;
                     case R.id.buttonAfficherReleveAnnuler:
                         finish();

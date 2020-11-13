@@ -108,9 +108,7 @@ public class ActivityAfficheSaisieTemperature extends Activity {
                     case R.id.buttonAnnulerSaisieTemperature:
                         finish();
                         Toast.makeText(getApplicationContext(), "Annulation de la saisie", Toast.LENGTH_LONG).show();
-                        finish();
-                        Intent i2 = new Intent(ActivityAfficheSaisieTemperature.this, ActivitySaisieTemperature.class);
-                        startActivity(i2);
+                        
                         break;
 
 
