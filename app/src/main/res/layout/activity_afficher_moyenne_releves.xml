@@ -50,7 +50,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/texteRentre"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/texte"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingTop="25dp"
+                android:text="@string/questionUnite" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

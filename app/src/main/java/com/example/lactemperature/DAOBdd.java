@@ -201,7 +201,7 @@ public class DAOBdd {
 
         if (c.getCount() > 0) {
 
-            c.moveToFirst();
+            //c.moveToFirst();
             //on se place sur le premier élément
             while (c.moveToNext()) {
                 Releve unReleve = new Releve(0, 0, 0, 0, 0, 0, null); //On créé un relevé
