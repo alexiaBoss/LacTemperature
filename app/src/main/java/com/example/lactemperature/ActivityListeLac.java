@@ -12,19 +12,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
 import static java.lang.String.valueOf;
 
 
-public class ActivityListeLac extends Activity {
+public class ActivityListeLac extends AppCompatActivity implements OnMapReadyCallback {
 
     final String[] leLac= new String[1];
+    GoogleMap map;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_lac);
         Button buttonRetourListeLac = findViewById(R.id.buttonRetourListeLac);
+
+
 
         //on place un écouteur dessus:
         View.OnClickListener ecouteur1 = new View.OnClickListener() {
@@ -87,6 +100,17 @@ public class ActivityListeLac extends Activity {
                 longitude.setText(valueOf(lac.getLongitude()));
                 TextView latitude = findViewById(R.id.textViewLatitude);
                 latitude.setText(valueOf(lac.getLatitude()));
+                double latitude2 = lac.getLatitude();
+                double longitude2 = lac.getLongitude();
+                LatLng lacCoo = new LatLng(latitude2, longitude2);
+
+                map.clear();
+
+                map.addMarker(new MarkerOptions().position(lacCoo).title("Marker positionner sur le" + lac.getNomLac()));
+                map.moveCamera(CameraUpdateFactory.newLatLng(lacCoo));
+                map.setMinZoomPreference((float) 4.75);
+                map.setMaxZoomPreference((float) 4.75);
+
             }
 
             @Override
@@ -94,6 +118,18 @@ public class ActivityListeLac extends Activity {
 
             }
         });
+
+        // Get the SupportMapFragment and request notification
+        // when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+
+    }
+    public void onMapReady(GoogleMap googleMap) {
+        this.map = googleMap;
+
+
     }
 
 }

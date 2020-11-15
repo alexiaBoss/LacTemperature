@@ -50,16 +50,16 @@ public class ActivityAfficheSaisieTemperature extends Activity {
 
 
         if (temp.equals("6")) {
-              leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),Double.valueOf(temperature),0,0,0,lac);
+              leReleveInser = new Releve(Integer.valueOf(separated[1]),Integer.valueOf(separated[0]),Double.valueOf(temperature),0,0,0,lac);
         }
         if (temp.equals("12")) {
-             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,Double.valueOf(temperature),0,0,lac);
+             leReleveInser = new Releve(Integer.valueOf(separated[1]),Integer.valueOf(separated[0]),0,Double.valueOf(temperature),0,0,lac);
         }
         if (temp.equals("18")) {
-             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,0,Double.valueOf(temperature),0,lac);
+             leReleveInser = new Releve(Integer.valueOf(separated[1]),Integer.valueOf(separated[0]),0,0,Double.valueOf(temperature),0,lac);
         }
         if (temp.equals("24")) {
-             leReleveInser = new Releve(Integer.valueOf(separated[0]),Integer.valueOf(separated[1]),0,0,0,Double.valueOf(temperature),lac);
+             leReleveInser = new Releve(Integer.valueOf(separated[1]),Integer.valueOf(separated[0]),0,0,0,Double.valueOf(temperature),lac);
         }
 
 
@@ -108,7 +108,7 @@ public class ActivityAfficheSaisieTemperature extends Activity {
                     case R.id.buttonAnnulerSaisieTemperature:
                         finish();
                         Toast.makeText(getApplicationContext(), "Annulation de la saisie", Toast.LENGTH_LONG).show();
-                        
+
                         break;
 
 
