@@ -89,10 +89,8 @@ if(signe.equals("°F")) {
                     case R.id.buttonRetour:
                         // enregistrer les données dans la base
 
-                        Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Retour", Toast.LENGTH_LONG).show();
                         finish();
-                        Intent i = new Intent (ActivityAfficheReleve.this, MainActivity.class);
-                        startActivity(i);
                         break;
                 }
 

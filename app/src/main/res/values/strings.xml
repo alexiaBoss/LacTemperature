@@ -13,7 +13,7 @@
     <string name="douzeh">12h</string>
     <string name="dixhuith">18h</string>
     <string name="vingtquatreh">24h</string>
-    <string name="QuestionLac">De quel lac souhaitez-vous le relevé? </string>
+    <string name="QuestionLac">De quel lac? </string>
     <string name="questionUnite">En quelle unité doit-être affichée la température: </string>
     <string name="C"> °C</string>
     <string name="F"> °F</string>
@@ -29,9 +29,9 @@
     <string name="Retour">Retour</string>
     <string name="BoutonListeLac">Liste des Lacs</string>
     <string name="longitude">Longitude</string>
-    <string name="lattitude">Lattitude</string>
+    <string name="lattitude">Latitude</string>
     <string name="selectionnez_un_lac">Selectionnez un lac : </string>
     <string name="menulisteLac">Liste des lacs</string>
-    <string name="lattitudeLac">Lattitude: </string>
+    <string name="lattitudeLac">Latitude: </string>
     <string name="longitudeLac">Longitude: </string>
 </resources>

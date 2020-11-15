@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DAOBdd {
 
-    static final int VERSION_BDD =5;
+    static final int VERSION_BDD =8;
     private static final String NOM_BDD = "bddLacTemperature.db";
 
     //table Lac

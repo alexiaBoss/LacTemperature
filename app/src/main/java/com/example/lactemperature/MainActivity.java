@@ -168,6 +168,11 @@ public class MainActivity extends AppCompatActivity {
         Releve releve63 = new Releve(29, 1, 4.2, 4.8, 4.2, 3.8, "Lac de Oô");
         Releve releve64 = new Releve(30, 1, 4.2, 4.6, 4.4, 4.1, "Lac de Oô");
         Releve releve65 = new Releve(31, 1, 4.7, 4.9, 4.5, 4.0, "Lac de Oô");
+        // Relevé pour le jeu d'essai:
+        Releve releve66 = new Releve(15, 3, 4.0, 4.3, 4.5, 0, "Lac de Oô");
+
+
+
         //on ouvre la base de données
         releveBdd.open();
         //on insère tout les relevés
@@ -240,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
         releveBdd.insererReleve(releve63);
         releveBdd.insererReleve(releve64);
         releveBdd.insererReleve(releve65);
+        releveBdd.insererReleve(releve66);
 
         //le curseur pour afficher le nombre de relevés dans la base
         Cursor c = releveBdd.getDataReleve();
