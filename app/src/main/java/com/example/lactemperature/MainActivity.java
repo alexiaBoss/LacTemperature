@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
         lacBdd.insererLac(lac10);
         //le curseur pour afficher le nombre de Lac dans la base
         Cursor c = lacBdd.getDataLac();
-        Toast.makeText(getApplicationContext(), " il y a " + c.getCount() +
-                " lacs ", Toast.LENGTH_LONG).show();
     }
 
     public void remplirTableReleve() {
@@ -249,7 +247,6 @@ public class MainActivity extends AppCompatActivity {
 
         //le curseur pour afficher le nombre de relevés dans la base
         Cursor c = releveBdd.getDataReleve();
-        Toast.makeText(getApplicationContext(), " il y a " + String.valueOf(c.getCount()) + " releve ", Toast.LENGTH_LONG).show();
     }
 
 
@@ -262,24 +259,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuSaisieTemperature:
-                Toast.makeText(getApplicationContext(), "Ouverture de la fenêtre : Saisie d'une température", Toast.LENGTH_LONG).show();
                 Intent intent1 = new Intent(MainActivity.this, ActivitySaisieTemperature.class);
                 startActivity(intent1);
                 return true;
 
             case R.id.menuAfficherUnReleve:
-                Toast.makeText(getApplicationContext(), "Ouverture de la fenêtre : Afficher un relevé", Toast.LENGTH_LONG).show();
                 Intent intent2 = new Intent(MainActivity.this, ActivityAfficherReleve.class);
                 startActivity(intent2);
                 return true;
 
             case R.id.menuAfficherMoyenneReleves:
-                Toast.makeText(getApplicationContext(), "Ouverture de la fenêtre : Afficher la moyenne des relevés", Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(MainActivity.this, ActivityAfficherMoyenneReleves.class);
                 startActivity(intent3);
                 return true;
             case R.id.menuListeLac:
-                Toast.makeText(getApplicationContext(), "Ouverture de la fenêtre : Liste des lacs", Toast.LENGTH_LONG).show();
                 Intent intent4 = new Intent(MainActivity.this, ActivityListeLac.class);
                 startActivity(intent4);
                 return true;

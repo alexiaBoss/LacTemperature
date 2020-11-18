@@ -51,7 +51,6 @@ public class ActivityAfficherReleve extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonAfficherReleveValider:
-                        // enregistrer les données dans la base
                         //on passer les infos dans l'autre interface
                         String signe = leSigne[0];
                         if(signe.length() != 0) {
@@ -60,7 +59,6 @@ public class ActivityAfficherReleve extends Activity {
                             i.putExtra("EXTRA_DATE", Date.getText().toString());
                             i.putExtra("EXTRA_SIGNE", leSigne[0]);
                             startActivityForResult(i, 0);
-                            Toast.makeText(getApplicationContext(), "Ouverture de l'affichage", Toast.LENGTH_LONG).show();
                         }else{
 
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -88,8 +86,8 @@ public class ActivityAfficherReleve extends Activity {
                     }
                         break;
                     case R.id.buttonAfficherReleveAnnuler:
+                        Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
                         finish();
-                        Toast.makeText(getApplicationContext(), "Annulation de l'affichage", Toast.LENGTH_LONG).show();
                         break;
 
 
@@ -112,13 +110,9 @@ public class ActivityAfficherReleve extends Activity {
             public void onCheckedChanged (RadioGroup radioGroupSigne,int i){
                 switch (i) {
                     case R.id.radioButton:
-                        Toast.makeText(getApplicationContext(), " Degrés Celsius",
-                                Toast.LENGTH_LONG).show();
                         leSigne[0] ="°C";
                         break;
                     case R.id.radioButton2:
-                        Toast.makeText(getApplicationContext(), " Degrés Fahrenheit",
-                                Toast.LENGTH_LONG).show();
                         leSigne[0] ="°F";
                         break;
 
@@ -149,7 +143,6 @@ public class ActivityAfficherReleve extends Activity {
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
-                Toast.makeText(ActivityAfficherReleve.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
             }
 
             @Override

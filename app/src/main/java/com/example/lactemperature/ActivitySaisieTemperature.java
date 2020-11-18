@@ -118,25 +118,15 @@ public class ActivitySaisieTemperature extends Activity {
             public void onCheckedChanged (RadioGroup radioGroupTemp,int i){
                 switch (i) {
                     case R.id.radioButtonSaisie6:
-                        Toast.makeText(getApplicationContext(), " 6h",
-                                Toast.LENGTH_LONG).show();
                         laTemp[0] ="6";
                         break;
                     case R.id.radioButtonSaisie12:
-                        Toast.makeText(getApplicationContext(), " 12h",
-                                Toast.LENGTH_LONG).show();
                         laTemp[0] ="12";
                         break;
                     case R.id.radioButtonSaisie18:
-
-                        Toast.makeText(getApplicationContext(), " 18h",
-                                Toast.LENGTH_LONG).show();
                         laTemp[0] ="18";
                         break;
                     case R.id.radioButtonSaisie24:
-
-                        Toast.makeText(getApplicationContext(), " 24h",
-                                Toast.LENGTH_LONG).show();
                         laTemp[0] ="24";
                         break;
                 }
@@ -166,7 +156,6 @@ public class ActivitySaisieTemperature extends Activity {
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
-                Toast.makeText(ActivitySaisieTemperature.this, "Vous avez choisie : " + "\n" + leLac[0], Toast.LENGTH_SHORT).show();
                 //Remplissage des champs pour la longitude et la latitude.
                 Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
                 TextView longitude = findViewById(R.id.textViewLongitudeLac);

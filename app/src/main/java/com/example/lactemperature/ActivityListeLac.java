@@ -92,8 +92,6 @@ public class ActivityListeLac extends AppCompatActivity implements OnMapReadyCal
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // l'item selectionné va dans une variable leLac[]
                 leLac[0] = valueOf(spinnerAfficheLac.getSelectedItem());
-                Toast.makeText(ActivityListeLac.this, "Vous avez choisie : " + "\n" + leLac[0],
-                        Toast.LENGTH_SHORT).show();
                 //Remplissage des champs pour la longitude et la latitude.
                 Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
                 TextView longitude = findViewById(R.id.textViewLongitude);

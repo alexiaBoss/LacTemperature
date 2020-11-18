@@ -87,9 +87,7 @@ if(signe.equals("°F")) {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonRetour:
-                        // enregistrer les données dans la base
-
-                        Toast.makeText(getApplicationContext(), "Retour", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Retour à la saisie", Toast.LENGTH_LONG).show();
                         finish();
                         break;
                 }

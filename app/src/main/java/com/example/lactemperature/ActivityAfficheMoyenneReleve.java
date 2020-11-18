@@ -172,8 +172,6 @@ public class ActivityAfficheMoyenneReleve extends Activity{
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonRetour:
-                        // enregistrer les données dans la base
-                        //i.putExtra("EXTRA_CPT",);
                         Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
                         finish();
                         Intent i = new Intent(ActivityAfficheMoyenneReleve.this, MainActivity.class);
