@@ -98,12 +98,20 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/buttonValiderMAJLac"
+                style="@style/bouton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/BoutonValider" />
+
+            <Button
                 android:id="@+id/buttonRetourMenuLac"
                 style="@style/bouton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Retour" />
+                android:text="@string/BoutonAnnuler" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
