@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonAfficherReleve = findViewById(R.id.buttonAfficherReleve);
         Button buttonAfficherMoyenneReleves = (Button) findViewById(R.id.buttonAfficherMoyenneReleves);
         Button buttonListeLac = (Button) findViewById(R.id.buttonListeLac);
+        Button buttonMAJLacs = (Button) findViewById(R.id.buttonMAJLacs);
 
 
         //on place un écouteur dessus:
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent4 = new Intent(MainActivity.this, ActivityListeLac.class);
                         startActivity(intent4);
                         break;
+                    case R.id.buttonMAJLacs:
+                        Intent intent5 = new Intent(MainActivity.this, ActivityMAJLacs.class);
+                        startActivity(intent5);
+                        break;
 
                 }
 
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAfficherReleve.setOnClickListener(ecouteur1);
         buttonAfficherMoyenneReleves.setOnClickListener(ecouteur1);
         buttonListeLac.setOnClickListener(ecouteur1);
+        buttonMAJLacs.setOnClickListener(ecouteur1);
 
     }
 
@@ -276,6 +282,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent4 = new Intent(MainActivity.this, ActivityListeLac.class);
                 startActivity(intent4);
                 return true;
+            case R.id.buttonMAJLacs:
+                Intent intent5 = new Intent(MainActivity.this, ActivityMAJLacs.class);
+                startActivity(intent5);
+                break;
         }
         return false;
     }

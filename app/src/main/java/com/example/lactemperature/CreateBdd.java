@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class CreateBdd extends SQLiteOpenHelper {
+public class CreateBdd extends SQLiteOpenHelper{
 
     // Structure de la table tLac contenant les lacs et leurs coordonnées
     private static final String TABLE_LAC = "tlac";
