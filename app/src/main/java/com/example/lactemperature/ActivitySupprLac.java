@@ -24,6 +24,9 @@ public class ActivitySupprLac  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suppr_lac);
 
+        final DAOBdd lacbdd = new DAOBdd(this);
+        lacbdd.open();
+
         //on associe à un objet java de type Button, un widget repéré physiquement par son id:
         Button buttonRetourMenuLac = findViewById(R.id.buttonRetourMenuLac);
         Button buttonValiderMAJLac = (Button) findViewById(R.id.buttonValiderMAJLac);
@@ -36,6 +39,13 @@ public class ActivitySupprLac  extends Activity {
                 switch (v.getId()) {
                     case R.id.buttonValiderMAJLac:
                         Intent intent = new Intent(ActivitySupprLac.this, ActivityMAJLacs.class);
+
+                        Lac lac = lacbdd.getLacWithNomLac(leLac[0]);
+
+                        lacbdd.insererHistorique(lac);
+                        lacbdd.deleteLac(leLac[0]);
+
+
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Suppression du Lac", Toast.LENGTH_LONG).show();
                         break;
@@ -55,7 +65,7 @@ public class ActivitySupprLac  extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerNomLacListeLac);
-        final DAOBdd lacbdd = new DAOBdd(this);
+
         lacbdd.open();
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();

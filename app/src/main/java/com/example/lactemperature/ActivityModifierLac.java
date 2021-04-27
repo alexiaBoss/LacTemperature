@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,9 @@ public class ActivityModifierLac  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modif_lac);
 
+        final DAOBdd lacbdd = new DAOBdd(this);
+        lacbdd.open();
+
         //on associe à un objet java de type Button, un widget repéré physiquement par son id:
         Button buttonRetourMenuLac = findViewById(R.id.buttonRetourMenuLac);
         Button buttonValiderMAJLac = (Button) findViewById(R.id.buttonValiderMAJLac);
@@ -36,6 +40,18 @@ public class ActivityModifierLac  extends Activity {
                 switch (v.getId()) {
                     case R.id.buttonValiderMAJLac:
                         Intent intent = new Intent(ActivityModifierLac.this, ActivityMAJLacs.class);
+
+
+                        EditText textLatitude = findViewById(R.id.editTextLatitude);
+                        Double latitude = Double.valueOf(textLatitude.getText().toString());
+
+                        EditText textLongitude = findViewById(R.id.editTextLongitude);
+                        Double longitude = Double.valueOf(textLongitude.getText().toString());
+
+
+                        lacbdd.updateLac(leLac[0], longitude, latitude);
+
+
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
@@ -56,8 +72,7 @@ public class ActivityModifierLac  extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerNomLacListeLac);
-        final DAOBdd lacbdd = new DAOBdd(this);
-        lacbdd.open();
+
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();
         if (c.moveToFirst()) {
@@ -78,9 +93,9 @@ public class ActivityModifierLac  extends Activity {
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
                 //Remplissage des champs pour la longitude et la latitude.
                 Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
-                TextView longitude = findViewById(R.id.textViewLongitude);
+                TextView longitude = findViewById(R.id.editTextLongitude);
                 longitude.setText(valueOf(lac.getLongitude()));
-                TextView latitude = findViewById(R.id.textViewLatitude);
+                TextView latitude = findViewById(R.id.editTextLatitude);
                 latitude.setText(valueOf(lac.getLatitude()));
             }
 

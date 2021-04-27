@@ -51,14 +51,13 @@
                     android:layout_weight="1"
                     android:text="@string/lattitude" />
 
-                <TextView
-                    android:id="@+id/textViewLatitude"
+                <EditText
+                    android:id="@+id/editTextLatitude"
                     style="@style/texteRentre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="numberDecimal"
-                    android:text="6.56" />
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -76,15 +75,14 @@
                     android:layout_weight="1"
                     android:text="@string/longitude" />
 
-                <TextView
-                    android:id="@+id/textViewLongitude"
+                <EditText
+                    android:id="@+id/editTextLongitude"
                     style="@style/texteRentre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="10dp"
-                    android:inputType="numberDecimal"
-                    android:text="46.69" />
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
         </LinearLayout>

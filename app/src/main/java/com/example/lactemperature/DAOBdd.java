@@ -103,6 +103,17 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_LAC, null, values);
     }
+
+    public long updateLac (String nomLac, double longitude, double latitude){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+        values.put(COL_LONGITUDE, longitude);
+        values.put(COL_LATITUDE, latitude);
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.update(TABLE_LAC, values, COL_NOMLAC + " LIKE \"" + nomLac +"\"" ,null );
+    }
+
     public Lac cursorToArticle(Cursor c){ //Cette méthode permet de convertir un cursor en un lac
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
@@ -132,6 +143,7 @@ public class DAOBdd {
         return db.rawQuery("SELECT * FROM tlac", null);
     }
 
+    public int deleteLac(String nomLac){ return db.delete(TABLE_LAC,COL_NOMLAC + " LIKE \"" + nomLac +"\"",null);}
 
     //pour le relevé
     public long insererReleve (Releve unReleve){
@@ -254,7 +266,7 @@ public class DAOBdd {
 
     public ArrayList<Releve> getReleveWithLac(String nomLac){
         //Récupère dans un Cursor les valeurs correspondant à un relevé Lac;
-        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac, null, null, null, null);
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\"" , null, null, null, null);
         ArrayList <Releve> lesReleves = cursortoListeReleve(c);
         return lesReleves;
 
