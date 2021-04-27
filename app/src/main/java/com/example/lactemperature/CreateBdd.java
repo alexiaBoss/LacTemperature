@@ -32,6 +32,24 @@ public class CreateBdd extends SQLiteOpenHelper {
             + COL_TEMPA18H + " DOUBLE NOT NULL,"+ COL_TEMPA24H + " DOUBLE NOT NULL ,"+ COL_NOMLACRELEVE + " " +
             "TEXT NOT NULL," + " Foreign Key ("+COL_NOMLACRELEVE+") REFERENCES "+ TABLE_LAC + "("+COL_NOM_LAC+"))";
 
+    // Structure de la table tHistorique contenant les relevés avec leur date, les températures et le lac relevé supprimé
+    private static final String TABLE_HISTORIQUE = "tHistorique";
+    static final String COL_IDHISTORIQUE = "_id";
+    private static final String COL_JOURH = "Jour";
+    private static final String COL_MOISH = "Mois";
+    private static final String COL_TEMPA6HH= "TempA6h";
+    private static final String COL_TEMPA12HH = "TempA12h";
+    private static final String COL_TEMPA18HH = "TempA18h";
+    private static final String COL_TEMPA24HH = "TempA24h";
+    private static final String COL_NOMLACRELEVEH = "Lac";
+    private static final String COL_LONGITUDEH = "Longitude";
+    private static final String COL_LATITUDEH = "Latitude";
+    private static final String CREATE_TABLEHISTORIQUE = "CREATE TABLE " + TABLE_HISTORIQUE + " ("+COL_IDHISTORIQUE+" " +
+            "INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOMLACRELEVEH + " " +
+            "TEXT NOT NULL," + COL_LONGITUDEH + " DOUBLE NOT NULL, " + COL_LATITUDEH + " DOUBLE NOT NULL, " + COL_JOURH + " INTEGER NOT NULL, " + COL_MOISH + " " +
+            "INTEGER NOT NULL, " + COL_TEMPA6HH + " DOUBLE NOT NULL," + COL_TEMPA12HH + " DOUBLE NOT NULL,"
+            + COL_TEMPA18HH + " DOUBLE NOT NULL,"+ COL_TEMPA24HH + " DOUBLE NOT NULL);";
+
 
     //constructeur paramétré
     public CreateBdd(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -45,6 +63,7 @@ public class CreateBdd extends SQLiteOpenHelper {
         //on créé la table à partir de la requête écrite dans la variable CREATE_BDD
         db.execSQL(CREATE_TABLELAC);
         db.execSQL(CREATE_TABLERELEVE);
+        db.execSQL(CREATE_TABLEHISTORIQUE);
     }
 
     // appelée si la version de la base a changé
@@ -53,6 +72,7 @@ public class CreateBdd extends SQLiteOpenHelper {
         //On peut supprimer la table et la recréer
         db.execSQL("DROP TABLE " + TABLE_LAC + ";");
         db.execSQL("DROP TABLE " + TABLE_RELEVE + ";");
+        db.execSQL("DROP TABLE " + TABLE_HISTORIQUE + ";");
         onCreate(db);
     }
 }

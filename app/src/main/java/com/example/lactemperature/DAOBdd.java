@@ -46,6 +46,30 @@ public class DAOBdd {
     static final String COL_NOMLACRELEVE = "Lac";
     static final int NUM_COL_NOMLACRELEVE = 7;
 
+    //table historique
+    static final String TABLE_HISTORIQUE = "thistorique";
+    static final String COL_IDRELEVEH = "_id";
+    static final int NUM_COL_IDRELEVEH = 0;
+    static final String COL_NOMLACH = "NomLac";
+    static final int NUM_COL_NOMLACH = 1;
+    static final String COL_LONGITUDEH = "Longitude";
+    static final int NUM_COL_LONGITUDEH = 2;
+    static final String COL_LATITUDEH = "Latitude";
+    static final int NUM_COL_LATITUDEH = 3;
+    static final String COL_JOURH = "Jour";
+    static final int NUM_COL_JOURH = 4;
+    static final String COL_MOISH = "Mois";
+    static final int NUM_COL_MOISH = 5;
+    static final String COL_TEMPA6HH = "TempA6h";
+    static final int NUM_COL_TEMPA6HH = 6;
+    static final String COL_TEMPA12HH = "TempA12h";
+    static final int NUM_COL_TEMPA12HH = 7;
+    static final String COL_TEMPA18HH = "TempA18h";
+    static final int NUM_COL_TEMPA18HH = 8;
+    static final String COL_TEMPA24HH = "TempA24h";
+    static final int NUM_COL_TEMPA24HH = 9;
+    static final String COL_NOMLACRELEVEH = "Lac";
+    static final int NUM_COL_NOMLACRELEVEH = 10;
 
 
     private CreateBdd tableLac;
@@ -228,6 +252,14 @@ public class DAOBdd {
 
     }
 
+    public ArrayList<Releve> getReleveWithLac(String nomLac){
+        //Récupère dans un Cursor les valeurs correspondant à un relevé Lac;
+        Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac, null, null, null, null);
+        ArrayList <Releve> lesReleves = cursortoListeReleve(c);
+        return lesReleves;
+
+    }
+
     public Releve getReleveWithMoisAndJourAndLac(String nomLac, int mois, int jour){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR,COL_MOIS,COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
@@ -243,5 +275,26 @@ public class DAOBdd {
     public Cursor getDataReleve(){
         return db.rawQuery("SELECT * FROM treleve", null);
     }
-}
 
+
+    //pour l' Historique
+    public long insererHistorique (Lac unLac){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+        ArrayList<Releve> lesReleves = getReleveWithLac(unLac.getNomLac());
+        for(Releve unReleve : lesReleves) {
+            //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
+            values.put(COL_NOMLACH, unLac.getNomLac());
+            values.put(COL_LONGITUDEH, unLac.getLongitude());
+            values.put(COL_LATITUDEH, unLac.getLatitude());
+            values.put(COL_JOURH, unReleve.getJour());
+            values.put(COL_MOISH, unReleve.getMois());
+            values.put(COL_TEMPA6HH, unReleve.getTempA6h());
+            values.put(COL_TEMPA12HH, unReleve.getTempA12h());
+            values.put(COL_TEMPA18HH, unReleve.getTempA18h());
+            values.put(COL_TEMPA24HH, unReleve.getTempA24h());
+        }
+        //on insère l'objet dans la BDD via le ContentValues
+        return db.insert(TABLE_HISTORIQUE, null, values);
+    }
+}
