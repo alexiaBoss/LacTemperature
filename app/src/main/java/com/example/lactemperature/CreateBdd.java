@@ -33,7 +33,7 @@ public class CreateBdd extends SQLiteOpenHelper{
             "TEXT NOT NULL," + " Foreign Key ("+COL_NOMLACRELEVE+") REFERENCES "+ TABLE_LAC + "("+COL_NOM_LAC+"))";
 
     // Structure de la table tHistorique contenant les relevés avec leur date, les températures et le lac relevé supprimé
-    private static final String TABLE_HISTORIQUE = "tHistorique";
+    private static final String TABLE_HISTORIQUE = "thistorique";
     static final String COL_IDHISTORIQUE = "_id";
     private static final String COL_JOURH = "Jour";
     private static final String COL_MOISH = "Mois";
@@ -72,7 +72,7 @@ public class CreateBdd extends SQLiteOpenHelper{
         //On peut supprimer la table et la recréer
         db.execSQL("DROP TABLE " + TABLE_LAC + ";");
         db.execSQL("DROP TABLE " + TABLE_RELEVE + ";");
-        db.execSQL("DROP TABLE " + TABLE_HISTORIQUE + ";");
+        //db.execSQL("DROP TABLE " + TABLE_HISTORIQUE + ";");
         onCreate(db);
     }
 }

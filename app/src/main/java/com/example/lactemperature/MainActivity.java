@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if(lacbdd.getDataLac().getCount() == 0) {
             remplirTableLac();
             remplirTableReleve();
+
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
