@@ -72,7 +72,7 @@ public class CreateBdd extends SQLiteOpenHelper{
         //On peut supprimer la table et la recréer
         db.execSQL("DROP TABLE " + TABLE_LAC + ";");
         db.execSQL("DROP TABLE " + TABLE_RELEVE + ";");
-        //db.execSQL("DROP TABLE " + TABLE_HISTORIQUE + ";");
+        db.execSQL("DROP TABLE " + TABLE_HISTORIQUE + ";");
         onCreate(db);
     }
 }

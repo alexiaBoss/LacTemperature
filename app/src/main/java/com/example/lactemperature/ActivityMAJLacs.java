@@ -54,5 +54,7 @@ public class ActivityMAJLacs extends Activity {
         buttonModifierLac.setOnClickListener(ecouteur1);
         buttonRetour.setOnClickListener(ecouteur1);
 
+
+
     }
 }
