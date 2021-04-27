@@ -28,10 +28,17 @@
     <string name="MoyenneAfficherLac">Sur le lac : </string>
     <string name="Retour">Retour</string>
     <string name="BoutonListeLac">Liste des Lacs</string>
-    <string name="longitude">Longitude</string>
-    <string name="lattitude">Latitude</string>
+    <string name="longitude">Longitude : </string>
+    <string name="lattitude">Latitude : </string>
     <string name="selectionnez_un_lac">Selectionnez un lac : </string>
     <string name="menulisteLac">Liste des lacs</string>
     <string name="lattitudeLac">Latitude: </string>
     <string name="longitudeLac">Longitude: </string>
+    <string name="majLacs">Mise à Jour des Lacs </string>
+    <string name="bouton_suppression_lac"> Supprimer un Lac</string>
+    <string name="bouton_ajout_lac"> Ajouter un Lac</string>
+    <string name="bouton_modification_lac"> Modifier un Lac</string>
+    <string name="selectionnez_un_lac_modif"> Selectionner le lac à modifier: </string>
+    <string name="selectionnez_un_lac_suppr"> Selectionner le lac à supprimer: </string>
+    <string name="chooseLac"> Nom du Lac : </string>
 </resources>
