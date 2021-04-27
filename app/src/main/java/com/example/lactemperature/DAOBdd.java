@@ -50,7 +50,7 @@ public class DAOBdd {
     static final String TABLE_HISTORIQUE = "thistorique";
     static final String COL_IDRELEVEH = "_id";
     static final int NUM_COL_IDRELEVEH = 0;
-    static final String COL_NOMLACH = "NomLac";
+    static final String COL_NOMLACH = "Lac";
     static final int NUM_COL_NOMLACH = 1;
     static final String COL_LONGITUDEH = "Longitude";
     static final int NUM_COL_LONGITUDEH = 2;
@@ -308,5 +308,9 @@ public class DAOBdd {
         }
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_HISTORIQUE, null, values);
+    }
+
+    public Cursor getDataHistorique(){
+        return db.rawQuery("SELECT * FROM thistorique", null);
     }
 }

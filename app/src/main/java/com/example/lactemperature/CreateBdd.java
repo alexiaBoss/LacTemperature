@@ -41,11 +41,11 @@ public class CreateBdd extends SQLiteOpenHelper{
     private static final String COL_TEMPA12HH = "TempA12h";
     private static final String COL_TEMPA18HH = "TempA18h";
     private static final String COL_TEMPA24HH = "TempA24h";
-    private static final String COL_NOMLACRELEVEH = "Lac";
+    private static final String COL_NOMLACH = "Lac";
     private static final String COL_LONGITUDEH = "Longitude";
     private static final String COL_LATITUDEH = "Latitude";
     private static final String CREATE_TABLEHISTORIQUE = "CREATE TABLE " + TABLE_HISTORIQUE + " ("+COL_IDHISTORIQUE+" " +
-            "INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOMLACRELEVEH + " " +
+            "INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_NOMLACH + " " +
             "TEXT NOT NULL," + COL_LONGITUDEH + " DOUBLE NOT NULL, " + COL_LATITUDEH + " DOUBLE NOT NULL, " + COL_JOURH + " INTEGER NOT NULL, " + COL_MOISH + " " +
             "INTEGER NOT NULL, " + COL_TEMPA6HH + " DOUBLE NOT NULL," + COL_TEMPA12HH + " DOUBLE NOT NULL,"
             + COL_TEMPA18HH + " DOUBLE NOT NULL,"+ COL_TEMPA24HH + " DOUBLE NOT NULL);";
