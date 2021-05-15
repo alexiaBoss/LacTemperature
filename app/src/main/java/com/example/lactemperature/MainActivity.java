@@ -129,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
         Releve releve21 = new Releve(2, 6, 5.8,5.2,5.1,5.0, "Lac de Salagou");
         Releve releve22 = new Releve(3, 6, 5.9,5.4,5.6,5.1, "Lac de Salagou");
         Releve releve23 = new Releve(4, 6, 5.2,5.5,5.4,5.7, "Lac de Salagou");
-        Releve releve24 = new Releve(29, 7, 16.5,16.8,16.9,16.5, "Lac deAnnecy");
-        Releve releve25 = new Releve(30, 7, 16.4,16.6,16.8,16.4, "Lac deAnnecy");
+        Releve releve24 = new Releve(29, 7, 16.5,16.8,16.9,16.5, "Lac de Annecy");
+        Releve releve25 = new Releve(30, 7, 16.4,16.6,16.8,16.4, "Lac de Annecy");
         Releve releve26 = new Releve(31, 7, 16.9,16.8,16.4,16.3, "Lac de Annecy");
         Releve releve27 = new Releve(5, 5, 15.2,15.3,15.6,15.1, "Lac de Oô");
         Releve releve28 = new Releve(6, 5, 15.8,15.6,15.6,15.7, "Lac de Oô");

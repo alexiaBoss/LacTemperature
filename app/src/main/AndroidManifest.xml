@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".ActivityModifierLac">
         </activity>
+        <activity android:name=".ActivityLectureCsv">
+        </activity>
         <meta-data
 
             android:name="com.google.android.geo.API_KEY"

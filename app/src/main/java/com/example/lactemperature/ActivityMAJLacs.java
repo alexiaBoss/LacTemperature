@@ -58,10 +58,15 @@ public class ActivityMAJLacs extends Activity {
                     case R.id.buttonCSV:
 
                        try {
+                            File path = new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/LacTemperature") ;
+                           if (!path.exists() ) {
 
-                           File file = new File(getExternalFilesDir(null) +"CSVFILE.csv");
+                               path.mkdirs();
+                           }
+                           File file = new File(path , "CSV_Lac_Temperature.csv");
                            // if file doesnt exists, then create it
-                           if (!file.exists()) {
+                           if (!file.exists() ) {
+
                                file.createNewFile();
                            }
 
@@ -103,22 +108,9 @@ public class ActivityMAJLacs extends Activity {
                        }
                         break;
                     case R.id.buttonlectureCSV:
-                    try {
-                        String csvFilename = getExternalFilesDir(null) +"CSVFILE.csv" ;
-                        CSVReader csvReader = new CSVReader(new FileReader(csvFilename));
-                        String[] row = null;
-                        while ((row = csvReader.readNext()) != null) {
-                            for(int i=0; i<row.length;i++) {
-                                System.out.println(row[i]);
-                            }
-                        }
-//...
-                        csvReader.close();
+                        Intent intent5 = new Intent(ActivityMAJLacs.this, ActivityLectureCsv.class);
+                        startActivity(intent5);
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
                         break;
 
                     case R.id.buttonRetourMenuLac:

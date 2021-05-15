@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DAOBdd {
 
-    static final int VERSION_BDD =10;
+    static final int VERSION_BDD =11;
     private static final String NOM_BDD = "bddLacTemperature.db";
 
     //table Lac
@@ -290,7 +290,7 @@ public class DAOBdd {
 
 
     //pour l' Historique
-    public long insererHistorique (Lac unLac){
+    public void insererHistorique (Lac unLac){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         ArrayList<Releve> lesReleves = getReleveWithLac(unLac.getNomLac());
@@ -305,9 +305,9 @@ public class DAOBdd {
             values.put(COL_TEMPA12HH, unReleve.getTempA12h());
             values.put(COL_TEMPA18HH, unReleve.getTempA18h());
             values.put(COL_TEMPA24HH, unReleve.getTempA24h());
+            db.insert(TABLE_HISTORIQUE, null, values);
         }
-        //on insère l'objet dans la BDD via le ContentValues
-        return db.insert(TABLE_HISTORIQUE, null, values);
+
     }
 
     public Cursor getDataHistorique(){
