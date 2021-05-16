@@ -100,7 +100,7 @@ public class ActivityMAJLacs extends Activity {
 
 
 
-                           Toast.makeText(getApplicationContext(), "salut :" + lHistorique, Toast.LENGTH_LONG).show();
+                           Toast.makeText(getApplicationContext(), "Fichier CSV Créé", Toast.LENGTH_LONG).show();
 
                     } catch (IOException e) {
                            e.printStackTrace();

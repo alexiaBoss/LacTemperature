@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/texte"
-                    android:text="TextView" />
+                    android:text="Aucune ligne trouvée. Veuillez écrire le CSV avant." />
             </LinearLayout>
         </ScrollView>
 
