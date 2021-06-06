@@ -92,20 +92,27 @@ public class ActivityListeLac extends AppCompatActivity implements OnMapReadyCal
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // l'item selectionné va dans une variable leLac[]
                 leLac[0] = valueOf(spinnerAfficheLac.getSelectedItem());
-                //Remplissage des champs pour la longitude et la latitude.
+                //récupération des donnée du lac de la liste deroulante
                 Lac lac =lacbdd.getLacWithNomLac(leLac[0]);
+                //Remplissage des champs pour la longitude et la latitude.
                 TextView longitude = findViewById(R.id.textViewLongitude);
                 longitude.setText(valueOf(lac.getLongitude()));
                 TextView latitude = findViewById(R.id.textViewLatitude);
                 latitude.setText(valueOf(lac.getLatitude()));
+                //recupération de la lattitude et de la lingitude pour recupérer les coordonnée du lac
                 double latitude2 = lac.getLatitude();
                 double longitude2 = lac.getLongitude();
+                //création des coordonnée du lac
                 LatLng lacCoo = new LatLng(latitude2, longitude2);
 
+                //nettoyage de la map google
                 map.clear();
 
+                //création du marqueur a la position du lac
                 map.addMarker(new MarkerOptions().position(lacCoo).title("Marker positionner sur le" + lac.getNomLac()));
+                //recentrage de la caméra
                 map.moveCamera(CameraUpdateFactory.newLatLng(lacCoo));
+                //bloquer le zoom.
                 map.setMinZoomPreference((float) 4.75);
                 map.setMaxZoomPreference((float) 4.75);
 

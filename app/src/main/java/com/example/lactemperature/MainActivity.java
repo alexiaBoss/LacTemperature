@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //ouverture de la bdd
         DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
+        //repmlissage des tables lac et releve
         if(lacbdd.getDataLac().getCount() == 0) {
             remplirTableLac();
             remplirTableReleve();
@@ -41,23 +43,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //lors d'un clic sur Saisir Temprature
                     case R.id.buttonSaisirTemperature:
+                        //redirection vers ActivitySaisieTemperature
                         Intent intent = new Intent(MainActivity.this, ActivitySaisieTemperature.class);
                         startActivity(intent);
                         break;
+                        //si clic sur Afficher Releve
                     case R.id.buttonAfficherReleve:
+                        //redirection vers ActivityAcfficherReleve
                         Intent intent2 = new Intent(MainActivity.this, ActivityAfficherReleve.class);
                         startActivity(intent2);
                         break;
+                        //si clic sur Afficher Moyenne releve
                     case R.id.buttonAfficherMoyenneReleves:
+                        //redirection vers ActivityAfficherMoyennereleves
                         Intent intent3 = new Intent(MainActivity.this, ActivityAfficherMoyenneReleves.class);
                         startActivity(intent3);
                         break;
+                        //si clic sur Liste lac
                     case R.id.buttonListeLac:
+                        //redirection vers ActivityListeLac
                         Intent intent4 = new Intent(MainActivity.this, ActivityListeLac.class);
                         startActivity(intent4);
                         break;
+                        //si clic sur Maj Lacs
                     case R.id.buttonMAJLacs:
+                        //redirection vers ActivityMAJLacs
                         Intent intent5 = new Intent(MainActivity.this, ActivityMAJLacs.class);
                         startActivity(intent5);
                         break;
@@ -75,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //methode pour remplire la table lac avec des lacs
     public void remplirTableLac() {
         DAOBdd lacBdd = new DAOBdd(this);
         Lac lac1 = new Lac("Lac Léman", 6.507111649175288, 46.44845480529758);
@@ -103,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         //le curseur pour afficher le nombre de Lac dans la base
         Cursor c = lacBdd.getDataLac();
     }
+
 
     public void remplirTableReleve() {
         DAOBdd releveBdd = new DAOBdd(this);
@@ -256,13 +270,13 @@ public class MainActivity extends AppCompatActivity {
         Cursor c = releveBdd.getDataReleve();
     }
 
-
+//gestion du menu de l'application
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
-
+//ajout de chaque bouton dans le menu de l'application donc meme chose que pour le gestionnaire de bouton
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuSaisieTemperature:

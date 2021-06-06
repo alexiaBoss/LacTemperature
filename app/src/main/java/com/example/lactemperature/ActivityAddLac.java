@@ -16,6 +16,7 @@ public class ActivityAddLac extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lac);
 
+        //ouverture de la bdd
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
 
@@ -29,26 +30,35 @@ public class ActivityAddLac extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //si le bouton est le bouton valider alors
                     case R.id.buttonValiderMAJLac:
+                        //création d'un intente redirigeant vers la page ActivityMAJLac
                         Intent intent = new Intent(ActivityAddLac.this, ActivityMAJLacs.class);
 
+                        //récupération du champs nom Lac
                         EditText textNomLac = findViewById(R.id.editTextNomLac);
                         String nomLac = textNomLac.getText().toString();
 
+                        //récupération du champs lattitude
                         EditText textLatitude = findViewById(R.id.editTextLatitude);
                         Double latitude = Double.valueOf(textLatitude.getText().toString());
 
+                        //récupération du champs longitude
                         EditText textLongitude = findViewById(R.id.editTextLongitude);
                         Double longitude = Double.valueOf(textLongitude.getText().toString());
 
+                        //création du lac avec les donnée récupéré (en Objet Lac)
                         Lac lac = new Lac(nomLac,longitude, latitude);
 
+                        //insertion de l'objet Lac dans la bdd
                         lacbdd.insererLac(lac);
+
 
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Enregistrement des données de la saisie", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.buttonRetourMenuLac:
+                        //retour vers la page précédente
                         finish();
                         Toast.makeText(getApplicationContext(), "Retour", Toast.LENGTH_LONG).show();
                         finish();

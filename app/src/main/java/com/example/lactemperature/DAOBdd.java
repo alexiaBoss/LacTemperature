@@ -93,6 +93,7 @@ public class DAOBdd {
         db.close();
         return null;
     }
+    //methode pour inserer un lac
     public long insererLac (Lac unLac){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -104,6 +105,7 @@ public class DAOBdd {
         return db.insert(TABLE_LAC, null, values);
     }
 
+    //methode pour mettre un jour un lac
     public long updateLac (String nomLac, double longitude, double latitude){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -114,7 +116,8 @@ public class DAOBdd {
         return db.update(TABLE_LAC, values, COL_NOMLAC + " LIKE \"" + nomLac +"\"" ,null );
     }
 
-    public Lac cursorToArticle(Cursor c){ //Cette méthode permet de convertir un cursor en un lac
+    //Cette méthode permet de convertir un cursor en un lac
+    public Lac cursorToArticle(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
@@ -130,7 +133,7 @@ public class DAOBdd {
     }
 
 
-
+//recupération d'un lac grace a son nom
     public Lac getLacWithNomLac(String nomLac){
         //Récupère dans un Cursor les valeurs correspondant à un article grâce à sa designation)
         Cursor c = db.query(TABLE_LAC, new String[] {COL_ID,COL_NOMLAC, COL_LONGITUDE, COL_LATITUDE}, COL_NOMLAC + " LIKE \"" + nomLac +"\"", null, null, null, null);
@@ -138,14 +141,17 @@ public class DAOBdd {
     }
 
 
-
+//récupération de toutes les données du lac
     public Cursor getDataLac(){
         return db.rawQuery("SELECT * FROM tlac", null);
     }
 
+    //suppression d'un lac grace a son nom
     public int deleteLac(String nomLac){ return db.delete(TABLE_LAC,COL_NOMLAC + " LIKE \"" + nomLac +"\"",null);}
 
     //pour le relevé
+
+    //insertion d'un relevé
     public long insererReleve (Releve unReleve){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -161,6 +167,7 @@ public class DAOBdd {
         return db.insert(TABLE_RELEVE, null, values);
     }
 
+    //mise a jour du relevé de 6h
     public long updateReleve6h (String nomLac, int mois, int jour , double temp){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -170,6 +177,7 @@ public class DAOBdd {
         return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
     }
 
+    //mise a jour du relevé de 12h
     public long updateReleve12h (String nomLac, int mois, int jour , double temp){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -178,7 +186,7 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
     }
-
+    //mise a jour du relevé de 18h
     public long updateReleve18h (String nomLac, int mois, int jour , double temp){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -187,7 +195,7 @@ public class DAOBdd {
         //on insère l'objet dans la BDD via le ContentValues
         return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
     }
-
+    //mise a jour du relevé de 24h
     public long updateReleve24h (String nomLac, int mois, int jour , double temp){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -197,14 +205,8 @@ public class DAOBdd {
         return db.update(TABLE_RELEVE, values, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour,null );
     }
 
-
-
-
-
-
-
-
-    private Releve cursorToReleve(Cursor c){ //Cette méthode permet de convertir un cursor en un relevé
+    //Cette méthode permet de convertir un cursor en un relevé
+    private Releve cursorToReleve(Cursor c){
 
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0) {
@@ -232,6 +234,7 @@ public class DAOBdd {
         return unReleve; //On retourne le relevé
     }
 
+    ////Cette méthode permet de convertir un cursor en une liste de releve
     public ArrayList<Releve> cursortoListeReleve(Cursor c) {
         ArrayList<Releve> lesReleves = new ArrayList<>();
 
@@ -256,6 +259,7 @@ public class DAOBdd {
         c.close();
         return lesReleves;
     }
+    //recupération des relevés grace au mois et au nom du lac
     public ArrayList<Releve> getReleveWithMoisAndLac(String nomLac, int mois){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, Lac;
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois, null, null, null, null);
@@ -264,6 +268,7 @@ public class DAOBdd {
 
     }
 
+    //recupération des relevés grace au nom du lac
     public ArrayList<Releve> getReleveWithLac(String nomLac){
         //Récupère dans un Cursor les valeurs correspondant à un relevé Lac;
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\"" , null, null, null, null);
@@ -272,24 +277,28 @@ public class DAOBdd {
 
     }
 
+    //recupérer les relevé grace au mois , au jour et au lac
     public Releve getReleveWithMoisAndJourAndLac(String nomLac, int mois, int jour){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR,COL_MOIS,COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
         return cursorToReleve(c);
     }
 
+    ////recupérer les relevé grace au mois , au jour et au lac
     public Releve getTempByLacAndHeureAndDate(String nomLac, int mois, int jour){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
         return cursorToReleve(c);
     }
 
+    //récupérer toutes les données de la table releve
     public Cursor getDataReleve(){
         return db.rawQuery("SELECT * FROM treleve", null);
     }
 
 
     //pour l' Historique
+    //pour inserer un histoirque
     public void insererHistorique (Lac unLac){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
@@ -310,6 +319,7 @@ public class DAOBdd {
 
     }
 
+    //recupérér toutes les données de la table historique
     public Cursor getDataHistorique(){
         return db.rawQuery("SELECT * FROM thistorique", null);
     }

@@ -1,6 +1,8 @@
 package com.example.lactemperature;
 
 public class Releve {
+
+    //constructuer de Releve
     public Releve(int jour, int mois, double tempA6h, double tempA12h, double tempA18h, double tempA24h, String nomLac) {
         this.jour = jour;
         this.mois = mois;
@@ -11,6 +13,7 @@ public class Releve {
         this.nomLac = nomLac;
     }
 
+    // attributs de la classe Releve
     protected int jour;
     protected int mois;
     protected double tempA6h;
@@ -20,6 +23,7 @@ public class Releve {
     protected String nomLac;
 
 
+    //Accesseurs et Mutateurs
     public int getJour() {
         return jour;
     }
