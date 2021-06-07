@@ -20,5 +20,10 @@
         style="@style/texte"
         android:title="@string/menulisteLac">
     </item>
+    <item
+        android:id="@+id/menuMAJLac"
+        style="@style/texte"
+        android:title="@string/menuMAJLac">
+    </item>
 
 </menu>

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DAOBdd {
 
-    static final int VERSION_BDD =11;
+    static final int VERSION_BDD =12;
     private static final String NOM_BDD = "bddLacTemperature.db";
 
     //table Lac
@@ -284,7 +284,7 @@ public class DAOBdd {
         return cursorToReleve(c);
     }
 
-    ////recupérer les relevé grace au mois , au jour et au lac
+    ////recupérer les relevé grace au mois , au jour et au lac (meme que au dessu)
     public Releve getTempByLacAndHeureAndDate(String nomLac, int mois, int jour){
         //Récupère dans un Cursor les valeurs correspondant à un relevé grâce au mois, jour, lac et heure
         Cursor c = db.query(TABLE_RELEVE, new String[] { COL_JOUR, COL_MOIS, COL_TEMPA6H, COL_TEMPA12H, COL_TEMPA18H, COL_TEMPA24H, COL_NOMLACRELEVE}, COL_NOMLACRELEVE + " LIKE \"" + nomLac +"\" AND " + COL_MOIS + " = " + mois+" AND " + COL_JOUR + " = " + jour, null, null, null, null);
@@ -324,3 +324,4 @@ public class DAOBdd {
         return db.rawQuery("SELECT * FROM thistorique", null);
     }
 }
+

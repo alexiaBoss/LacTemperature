@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent4 = new Intent(MainActivity.this, ActivityListeLac.class);
                 startActivity(intent4);
                 return true;
-            case R.id.buttonMAJLacs:
+            case R.id.menuMAJLac:
                 Intent intent5 = new Intent(MainActivity.this, ActivityMAJLacs.class);
                 startActivity(intent5);
                 break;

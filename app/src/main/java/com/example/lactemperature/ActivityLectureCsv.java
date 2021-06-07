@@ -23,6 +23,7 @@ public class ActivityLectureCsv extends Activity {
         TextView textView = findViewById(R.id.textView15);
         //instantation du texte au cas ou le fichier est vide
         String text = "Aucune ligne : Veillez à créé le fichier CSV avant.";
+        textView.setText(text);
         //lecture du fichier csv
         try {
             //recherche du fichier dans les dossier du téléphone (directory download/lacTempérature/CSV_Lac_Temperature.csv)

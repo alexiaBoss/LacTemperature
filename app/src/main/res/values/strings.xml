@@ -41,4 +41,5 @@
     <string name="selectionnez_un_lac_modif"> Selectionner le lac à modifier: </string>
     <string name="selectionnez_un_lac_suppr"> Selectionner le lac à supprimer: </string>
     <string name="chooseLac"> Nom du Lac : </string>
+    <string name="menuMAJLac">Mises à jour des lacs</string>
 </resources>

@@ -116,7 +116,7 @@ public class ActivityMAJLacs extends Activity {
 
 
 
-                           Toast.makeText(getApplicationContext(), "salut :" + lHistorique, Toast.LENGTH_LONG).show();
+                           Toast.makeText(getApplicationContext(),  "" + lHistorique, Toast.LENGTH_LONG).show();
 
                            //en cas d'erreur :
                     } catch (IOException e) {
