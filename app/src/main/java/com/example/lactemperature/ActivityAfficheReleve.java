@@ -17,10 +17,12 @@ public class ActivityAfficheReleve extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_releve_temperature);
 
+        //déclaration et instantation des variables
         String date ="";
         String lac="";
         String signe="";
-//on va récupérer les trois valeurs provenant de NewReleveActivity
+
+        //on va récupérer les trois valeurs provenant de NewReleveActivity
         Intent intent = getIntent();
         if (intent != null) {
             date = intent.getStringExtra("EXTRA_DATE");
@@ -28,13 +30,16 @@ public class ActivityAfficheReleve extends Activity {
             signe=intent.getStringExtra("EXTRA_SIGNE");
         }
 
+        //on remplis le champs de texte correspondant a la date récupéré précédamment
         TextView textdate = findViewById(R.id.textViewDate);
         textdate.setText(date);
 
+        //on remplis le champs de texte correspondant aux lac récupéré précédamment
         TextView textLac = findViewById(R.id.TextViewSaisieValiderNomLac);
         textLac.setText(lac);
 
 
+        //on remplis le champs de texte correspondant aux signes récupéré précédamment des différentes température
         TextView textSigne6 = findViewById(R.id.TextViewReleveC6h);
         textSigne6.setText(signe);
 
@@ -47,12 +52,17 @@ public class ActivityAfficheReleve extends Activity {
         TextView textSigne24 = findViewById(R.id.TextViewReleveC24h);
         textSigne24.setText(signe);
 
+        //ouverture de la bdd
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
+        //séparation du jour et du mois
         String[] separated = date.split("/");
 
+
+        //récupération du relevé correspondant au lac et a la date
          unReleve = lacbdd.getTempByLacAndHeureAndDate(lac,Integer.valueOf(separated[0]),Integer.valueOf(separated[1]));
 
+         //récupération des température pour chaque heure
           double textTemp6h = unReleve.getTempA6h();
 
             double textTemp12h = unReleve.getTempA12h();
@@ -61,6 +71,7 @@ public class ActivityAfficheReleve extends Activity {
 
             double textTemp24h = unReleve.getTempA24h();
 
+            //si le signe est °F alors on utilise la methode celsToFaren
 if(signe.equals("°F")) {
     textTemp6h = celsToFaren(textTemp6h);
     textTemp12h = celsToFaren(textTemp12h);
@@ -68,6 +79,7 @@ if(signe.equals("°F")) {
     textTemp24h = celsToFaren(textTemp24h);
 }
 
+        //Remplissage des champs de texte des température de chaque heure
         TextView texteTemp6h = findViewById(R.id.textViewReleve6h);
         texteTemp6h.setText(String.valueOf(textTemp6h));
         TextView texteTemp12h = findViewById(R.id.textViewReleve12h);
@@ -97,6 +109,7 @@ if(signe.equals("°F")) {
         //on affecte l'écouteur aux boutons:
         buttonSaisieTemperatureRetour.setOnClickListener(ecouteur1);
     }
+    //Methode permettant de changer la température qui esst en parametre en Fareinheit (les température sont enregistrer en celcius dans la base)
     public double celsToFaren(double tempCels){
        double tempFaren;
         tempFaren = tempCels*(9/5)+32;

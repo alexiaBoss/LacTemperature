@@ -1,9 +1,8 @@
 package com.example.lactemperature;
 
 public class Historique {
+
     // constructeur de l'historique
-
-
     public Historique(String nomLac, double longitude, double latitude, int jour, int mois, double tempA6h, double tempA12h, double tempA18h, double tempA24h) {
         this.nomLac = nomLac;
         this.longitude = longitude;

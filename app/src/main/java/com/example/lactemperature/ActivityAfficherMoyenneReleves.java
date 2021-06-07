@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class ActivityAfficherMoyenneReleves extends Activity {
 
+    //déclaration des variables
     final String[] leLac = new String[1];
     final int[] leMois = new int[1];
     final String[] leSigne = new String[1];
@@ -30,6 +31,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_moyenne_releves);
 
+        //réécupération des boutons
         Button buttonAfficherReleveValider = findViewById(R.id.buttonAfficherReleveValider);
         Button buttonAfficherReleveAnnuler = findViewById(R.id.buttonAfficherReleveAnnuler);
 
@@ -42,9 +44,11 @@ public class ActivityAfficherMoyenneReleves extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //si on clique sur valider
                     case R.id.buttonAfficherReleveValider:
-                        //on passer les infos dans l'autre interface
+                        //on passer les infos dans l'autre interface grace au EXTRA
                         String signe = leSigne[0];
+                        //si l'unité a bien été séléctionner
                         if(signe.length() != 0) {
                             Intent i = new Intent(ActivityAfficherMoyenneReleves.this, ActivityAfficheMoyenneReleve.class);
                             i.putExtra("EXTRA_LAC", leLac[0]);
@@ -53,8 +57,10 @@ public class ActivityAfficherMoyenneReleves extends Activity {
 
 
                             startActivityForResult(i, 0);
+                         //si aucune unité n'a été séléctionner
                         }else{
 
+                            //création d'une alerte
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
                             //set title
@@ -79,6 +85,7 @@ public class ActivityAfficherMoyenneReleves extends Activity {
                             alertDialog.show();
                         }
                         break;
+                        //si oin clique sur retour on retourne au menu
                     case R.id.buttonAfficherReleveAnnuler:
                         Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
                         finish();
@@ -95,14 +102,17 @@ public class ActivityAfficherMoyenneReleves extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerMoyenneLac);
+        //ouverture de la bdd
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
+        //recupération des données des lacs
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();
         if (c.moveToFirst()) {
 
             if (c.getCount() != 0) {
 
+                //ajout des données dans la liste dérioulante
                 while (!c.isAfterLast()) {
                     leslacs.add(c.getString(1)); //add the item
                     c.moveToNext();
@@ -113,7 +123,9 @@ public class ActivityAfficherMoyenneReleves extends Activity {
             dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinnerAfficheLac.setAdapter(dataAdapterR);
             spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                //a la selectione d'un item,
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //on recupére le lac récupérer dans la variable leLac
                     leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
 
                 }
@@ -127,12 +139,15 @@ public class ActivityAfficherMoyenneReleves extends Activity {
 
             //gestion de la liste déroulante des Mois
             final Spinner spinnerAfficheMois = (Spinner) findViewById(R.id.spinnerMoyenneMois);
+            //ajout des 12 mois dans la liste deroulante
             Integer[] lesMois = {1,2,3,4,5,6,7,8,9,10,11,12};
             ArrayAdapter<Integer> dataAdapterR2 = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, lesMois);
             dataAdapterR2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinnerAfficheMois.setAdapter(dataAdapterR2);
             spinnerAfficheMois.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                //a la selection d'un item
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //on recupere le mois dans la variable le Mois
                     leMois[0] = Integer.valueOf((Integer) spinnerAfficheMois.getSelectedItem());
                 }
 

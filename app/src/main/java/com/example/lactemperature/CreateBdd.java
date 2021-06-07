@@ -59,7 +59,7 @@ public class CreateBdd extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //appelée lorsqu’aucune base n’existe et que la classe utilitaire doit en créer une
+        //appelée lorsque qu’aucune base n’existe et que la classe utilitaire doit en créer une
         //on créé la table à partir de la requête écrite dans la variable CREATE_BDD
         db.execSQL(CREATE_TABLELAC);
         db.execSQL(CREATE_TABLERELEVE);

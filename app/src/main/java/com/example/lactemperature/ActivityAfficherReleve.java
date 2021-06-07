@@ -37,6 +37,7 @@ public class ActivityAfficherReleve extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_releve);
 
+        //recupération des boutons et de la date
         final EditText Date = findViewById(R.id.dateReleveAfficherReleve);
         Button buttonAfficherReleveValider = findViewById(R.id.buttonAfficherReleveValider);
         Button buttonAfficherReleveAnnuler = findViewById(R.id.buttonAfficherReleveAnnuler);
@@ -50,17 +51,21 @@ public class ActivityAfficherReleve extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //lors du clic sur le bouton valider
                     case R.id.buttonAfficherReleveValider:
-                        //on passer les infos dans l'autre interface
+                        //on passer les infos dans l'autre interface grace au putExtra
                         String signe = leSigne[0];
+                        //si le signe a été coché alors
                         if(signe.length() != 0) {
                             Intent i = new Intent(ActivityAfficherReleve.this, ActivityAfficheReleve.class);
                             i.putExtra("EXTRA_LAC", leLac[0]);
                             i.putExtra("EXTRA_DATE", Date.getText().toString());
                             i.putExtra("EXTRA_SIGNE", leSigne[0]);
                             startActivityForResult(i, 0);
+                            //si le signe n'a pas été coché alors
                         }else{
 
+                            //création d'une alerte
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
                         //set title
@@ -85,6 +90,7 @@ public class ActivityAfficherReleve extends Activity {
                         alertDialog.show();
                     }
                         break;
+                        //lors du clic du bouton retour
                     case R.id.buttonAfficherReleveAnnuler:
                         Toast.makeText(getApplicationContext(), "Retour au menu", Toast.LENGTH_LONG).show();
                         finish();
@@ -123,14 +129,17 @@ public class ActivityAfficherReleve extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerAfficheLac);
+        //ouverture de la bdd
         DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
+        //récupération des données des lacs
         Cursor c = lacbdd.getDataLac();
         ArrayList<String> leslacs = new ArrayList<String>();
         if (c.moveToFirst()) {
 
             if (c.getCount() != 0) {
 
+                //remplissage de la liste deroulante avec les données récupéré
                 while (!c.isAfterLast()) {
                     leslacs.add(c.getString(1)); //add the item
                     c.moveToNext();
@@ -141,7 +150,9 @@ public class ActivityAfficherReleve extends Activity {
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAfficheLac.setAdapter(dataAdapterR);
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //lors de la séléction d'un item,
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //recupération du lac slééctioner dans la variable leLac
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
             }
 
@@ -156,7 +167,9 @@ public class ActivityAfficherReleve extends Activity {
 
 
 //gestion du calendrier
+        //création du calendrier
             final Calendar myCalendar = Calendar.getInstance();
+            ///récupération de l'eddittexte  du calendrier
         final EditText edittext = findViewById(R.id.dateReleveAfficherReleve);
         edittext.requestFocus();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {

@@ -19,20 +19,29 @@ public class ActivityLectureCsv extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecture_csv);
 
+        //récupération du champs de texte contenu le texte du fichier csv
         TextView textView = findViewById(R.id.textView15);
-        String text = "Aucune ligne : Veuillez à créé le fichier CSV avant.";
+        //instantation du texte au cas ou le fichier est vide
+        String text = "Aucune ligne : Veillez à créé le fichier CSV avant.";
+        textView.setText(text);
+        //lecture du fichier csv
         try {
+            //recherche du fichier dans les dossier du téléphone (directory download/lacTempérature/CSV_Lac_Temperature.csv)
             String csvFilename = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) +"/LacTemperature/CSV_Lac_Temperature.csv" ;
+            //création du csvReader
             CSVReader csvReader = new CSVReader(new FileReader(csvFilename));
             String[] row = null;
+            //pour chaque ligne du cfichier csv, on créé une ligne contenant le texte du fichier csv
             while ((row = csvReader.readNext()) != null) {
                 text = "";
                 for(int i=0; i<row.length;i++) {
                     text = text + row[i] + "\n \n";
                 }
             }
+            //on affecte le texte au champs de texte correspondant
             textView.setText(text);
 //...
+            //on ferme le csvReader
             csvReader.close();
 
         } catch (IOException e) {
@@ -50,6 +59,7 @@ public class ActivityLectureCsv extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //retour au menu des mises a jour de lacs
                     case R.id.buttonRetourCSV:
                         finish();
                         Intent i = new Intent(ActivityLectureCsv.this, ActivityMAJLacs.class);

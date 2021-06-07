@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import static java.lang.String.valueOf;
 
 public class ActivitySupprLac  extends Activity {
+    //decalration des variables
     final String[] leLac= new String[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suppr_lac);
 
+        //ouverture de la bdd
         final DAOBdd lacbdd = new DAOBdd(this);
         lacbdd.open();
 
@@ -37,19 +39,26 @@ public class ActivitySupprLac  extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    //lors d'un clic sur valider
                     case R.id.buttonValiderMAJLac:
+                        //redirection vers ActivityMAJLacs
                         Intent intent = new Intent(ActivitySupprLac.this, ActivityMAJLacs.class);
 
+                        // recupération du lac séléctionner sous un objet LAC
                         Lac lac = lacbdd.getLacWithNomLac(leLac[0]);
 
+                        //insertion des relevé du lac dans la table historique
                         lacbdd.insererHistorique(lac);
+                        //suppression du lac
                         lacbdd.deleteLac(leLac[0]);
 
 
                         startActivity(intent);
                         Toast.makeText(getApplicationContext(), "Suppression du Lac", Toast.LENGTH_LONG).show();
                         break;
+                        //si on clic sur retour
                     case R.id.buttonRetourMenuLac:
+                        //retour au menu de la mise a jour des lacs
                         finish();
                         Toast.makeText(getApplicationContext(), "Retour", Toast.LENGTH_LONG).show();
                         finish();
@@ -65,14 +74,17 @@ public class ActivitySupprLac  extends Activity {
 
         //gestion de la liste déroulante des Lacs
         final Spinner spinnerAfficheLac = (Spinner) findViewById(R.id.spinnerNomLacListeLac);
-
+//ouverture de la bdd
         lacbdd.open();
+        //recupération des données des lacs
         Cursor c = lacbdd.getDataLac();
+
         ArrayList<String> leslacs = new ArrayList<String>();
         if (c.moveToFirst()) {
 
             if (c.getCount() != 0) {
 
+                //remplissage de la liste deroulantes des lacs
                 while (!c.isAfterLast()) {
                     leslacs.add(c.getString(1)); //add the item
                     c.moveToNext();
@@ -83,7 +95,9 @@ public class ActivitySupprLac  extends Activity {
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAfficheLac.setAdapter(dataAdapterR);
         spinnerAfficheLac.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //si un item est selectionner
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //on le recupére dans la variable leLac
                 leLac[0] = String.valueOf(spinnerAfficheLac.getSelectedItem());
             }
 
